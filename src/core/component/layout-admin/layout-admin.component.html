@@ -1,0 +1,49 @@
+<p-toast></p-toast>
+<div class="p-grid p-flex-column" [ngStyle]="{'min-height.px': height}">
+    <div class="p-col gu-pad-bot-0 gu-top-bar" style="flex-grow: 0;">
+        <div class="p-grid gu-border-bottom-content-left">
+            <div class="p-col" style="border-right: 1px solid #E5E7EB;">
+                <div class="p-grid">
+                    <div class="p-col">
+                        <div class="box">
+                            <!-- auto -->
+                        </div>
+                    </div>
+                    <div class="p-col-fixed wrap-avatar">
+                        <div class="p-d-flex p-ai-center">
+                          <div shape="circle" class="gu-avatar-header-right" >TA</div>
+                          <span class="p-pl-2 p-as-center">Tâm Tâm</span>
+                        </div>
+                        <!-- <p-overlayPanel #op [showCloseIcon]="false" [style]="{width: '190px'}" class="profile-overlay" my="left top" at="left bottom">
+                            <div class="control-menu">
+                                <div>
+                                    <a class="gu-a-action" href="javascript:void(0)" (click)="openProfile()">
+                                        <i class="pi pi-user-edit"></i>&nbsp;&nbsp;&nbsp;Hồ sơ của tôi
+                                    </a>
+                                </div>
+                                <div>
+                                    <a class="gu-a-action log-out" href="javascript:void(0)" (click)="signout()">
+                                        <i class="pi pi-power-off"></i>&nbsp;&nbsp;&nbsp;Đăng xuất
+                                    </a>
+                                </div>
+                            </div>
+                        </p-overlayPanel> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="p-col gu-pad-bot-0 background-layout-admin">
+        <div class="p-grid">
+            <div class="gu-content-left">
+                <app-menu-item [isCollapsedSideBar]="isCollapsedSideBar"></app-menu-item>
+            </div>
+            <div class="p-col main-content">
+                <div>
+                    <ng-content></ng-content>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

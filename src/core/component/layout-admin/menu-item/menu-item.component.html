@@ -1,0 +1,62 @@
+<div class="side-bar active">
+    <div class="side-bar-content">
+        <div>
+            <div class="logo-content">
+                <img class="logo" src="../../favico.png" alt="" />
+            </div>
+            <ul *ngFor="let child of items" class="nav-content">
+                <li *ngIf="!child.items || child.items.length === 0" class="nav-item" routerLinkActive="active"
+                    [routerLinkActiveOptions]="{exact:!!child.alias}" [class]="child.className">
+                    <a href="javascript:void(0)" [routerLink]="child.route" (click)="handleCollapsed(child.idx)">
+                        <i *ngIf="child.iconName" [class]="child.iconName"></i>
+                        <span>{{child.label}}</span>
+                    </a>
+                </li>
+                <li *ngIf="child.items && child.items.length > 0" class="nav-item">
+                    <button (click)="!isCollapsedSideBar && handleCollapsed(child.idx)"
+                        [ngClass]="{'active' : child.isCollapsed}">
+                        <a href="javascript:void(0)">
+                            <i [class]="child.iconName"></i>
+                            <span>{{child.label}}</span>
+                        </a>
+                        <i class="pi pi-chevron-down" [ngClass]="{'rotate': child.isCollapsed}"></i>
+                    </button>
+                </li>
+                <ul class="sub-menu" [ngClass]="{'hidden': (!child.isCollapsed)}">
+                    <li *ngFor="let subMenu of child.items" routerLinkActive="active" [routerLinkActiveOptions]="{exact:!!child.alias}" class="sub-item">
+                        <a href="javascript:void(0)" [routerLink]="subMenu.route">
+                            <span>{{subMenu.label}}</span>
+                        </a>
+                    </li>
+                </ul>
+            </ul>
+        </div>
+        <!-- <div class="side-bar__footer">
+            <ul class="nav-content">
+                <li *ngIf="isPartner">
+                    <div class="card-info">
+                        <p-divider>
+                            <div class="inline-flex align-items-center p-pl-2 p-pr-2">
+                                <p>Tư vấn viên</p>
+                            </div>
+                        </p-divider>
+                        <div class="card-content p-d-flex p-flex-column p-p-3">
+                            <span><i class="pi pi-user"></i>&nbsp;&nbsp;{{platNameShop}}</span>
+                            <span><i class="pi pi-phone"></i>&nbsp;&nbsp;{{platPhone}}</span>
+                            <span><i class="pi pi-envelope"></i>&nbsp;&nbsp;{{platEmail}}</span>
+                        </div>
+                    </div>
+                </li>
+                <li *ngIf="!isPartner" class="nav-item">
+                    <a href="https://growthup.gitbook.io/docs/bat-dau/tao-tai-khoan-growthup" target="_blank">
+                        <i class="pi pi-book"></i>
+                        <span>Hướng dẫn sử dụng</span>
+                    </a>
+                </li>
+            </ul>
+            <div class="collapse" (click)="handleCollapsedSidebar()">
+                <img src="../../../../assets/image/collapse.svg" alt="">
+            </div>
+        </div> -->
+    </div>
+</div>

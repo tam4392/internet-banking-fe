@@ -1,1 +1,642 @@
-/* You can add global styles to this file, and also import other style files */
+@import url("../node_modules/primeicons/primeicons.css");
+
+:root {
+  --distance-sm: calc(0.3rem + 0.3vw);
+  --distance-md: calc(0.5rem + 0.4vw);
+  --distance-lg: calc(0.7rem + 0.5vw);
+}
+
+body {
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  &::-webkit-scrollbar-thumb {
+    background-color: #ccc;
+  }
+
+  &::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 6px rgb(0 0 0 / 30%);
+    background-color: #F5F5F5;
+  }
+
+  &::-webkit-scrollbar {
+    width: 10px;
+    background-color: #F5F5F5;
+  }
+
+}
+
+.box {
+  background-color: var(--surface-e);
+  //text-align: center;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  //border-radius: 4px;
+  //box-shadow: 0 2px 1px -1px rgba(0, 0, 0, 0.2),
+  //0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 1px 3px 0 rgba(0, 0, 0, 0.12);
+}
+
+.gu-box-content {
+  background: #ffffff;
+  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.06), 0px 1px 3px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+  padding: 12px 0;
+
+  .card {
+    border-radius: 4px;
+  }
+}
+
+html {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+    Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol" !important;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 150%;
+}
+
+h5 {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 17px;
+  line-height: 150%;
+}
+
+ul {
+  padding-inline-start: 2.5rem;
+}
+
+.box-stretched {
+  height: 100%;
+}
+
+.vertical-container {
+  margin: 0;
+  height: 200px;
+  background: var(--surface-d);
+  border-radius: 4px;
+}
+
+.nested-grid .p-col-4 {
+  padding-bottom: 1rem;
+}
+
+.card-custom {
+  margin-right: 64px;
+  margin-left: 64px;
+}
+
+.gu-avatar-header-right {
+  .p-avatar {
+    margin: auto;
+    position: absolute;
+    top: 13px;
+    right: 20px;
+  }
+}
+
+.gu-pad-bot-0 {
+  padding-bottom: 0 !important;
+}
+
+.p-dropdown {
+  min-width: 216px !important;
+}
+
+.ng-select .ng-select-container {
+  min-height: 36px !important;
+}
+
+.ng-select .ng-select-container .ng-value-container {
+  border-top: none !important;
+}
+
+.ng-value {
+  background-color: rgb(28, 100, 242) !important;
+  color: white !important;
+  border-radius: 3px !important;
+}
+
+.gu-margin-top-md {
+  margin-top: calc(0.5rem + 0.5vw);
+}
+
+.gu-margin-top-lg {
+  margin-top: calc(0.6rem + 0.6vw);
+}
+
+.gu-margin-auto {
+  margin: auto !important;
+}
+
+.gu-text-center {
+  text-align: center !important;
+}
+
+.gu-text-right {
+  display: block !important;
+  text-align: right !important;
+}
+
+.gu-color {
+  color: #2f80ed !important;
+  color: #2f80ed !important;
+}
+
+.gu-a-action {
+  display: inline-block;
+  width: 100%;
+  text-decoration: none !important;
+  color: #495057 !important;
+  padding: 9px 12px;
+}
+
+.gu-dot {
+  height: 8px;
+  width: 8px;
+  border-radius: 50%;
+  display: inline-block;
+  text-align: center;
+  margin: auto;
+  vertical-align: middle;
+}
+
+.tableFixHead {
+  overflow-y: auto;
+  height: 100%;
+}
+
+.tableFixHead thead th {
+  position: sticky;
+  top: 0;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th,
+td {
+  padding: 8px 16px;
+  border: 1px solid #e5e7eb;
+  border-left: none;
+  border-right: none;
+}
+
+th {
+  background: #f3f4f6;
+  border-left: none;
+  border-right: none;
+}
+
+.gu-form-title {
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 150%;
+}
+
+.gu-description {
+  color: rgba(0, 0, 0, 0.45);
+}
+
+.popup-general .p-dialog {
+  border-radius: 6px;
+
+  .p-dialog-content {
+    padding: 16px 0;
+    border-radius: 6px;
+  }
+
+  .p-dialog-header {
+    position: absolute;
+    right: 0px;
+    background: transparent;
+    padding: 15px;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+  }
+}
+
+.box-search-product {
+  &.ng-select .ng-clear-wrapper {
+    height: 18px;
+    width: 17px;
+
+    .ng-clear {
+      left: 2px;
+      top: -1px;
+    }
+  }
+}
+
+.p-calendar {
+  width: 218px;
+
+  &:hover {
+
+    .p-button,
+    .p-inputtext {
+      border-color: #ced4da;
+    }
+  }
+
+  .p-inputtext {
+    border-right: none;
+    cursor: pointer;
+  }
+
+  .p-button {
+    background-color: transparent;
+    border: 1px solid #ced4da;
+    border-left: none;
+    color: #111827;
+    cursor: pointer;
+
+    &:hover {
+      background-color: transparent;
+      color: #111827;
+    }
+  }
+}
+.order-list .p-calendar {
+  height: 33px;
+}
+
+.status-select {
+  .gu-select {
+    cursor: pointer;
+  }
+}
+
+.dashboard-partner,
+.dashboard-admin {
+
+  .gu-select,
+  .p-calendar .p-inputtext {
+    height: 38px;
+    color: #111827;
+    outline: none;
+  }
+
+  .p-calendar .p-inputtext {
+    &:focus {
+      box-shadow: none;
+      border-color: #ced4da;
+    }
+  }
+
+  .p-calendar .p-button {
+    color: rgba(0, 0, 0, 0.25);
+
+    &:hover {
+      background: #F2F2F2;
+    }
+  }
+
+  .p-calendar .p-datepicker {
+    right: 0 !important;
+    left: auto !important;
+  }
+
+  .gu-select {
+    min-width: auto;
+    padding: 4px 10px;
+  }
+
+  .control {
+    .gu-select {
+      margin-right: 15px;
+    }
+  }
+}
+
+.dashboard-admin {
+  .btn-group {
+    text-align: center;
+    position: absolute;
+    bottom: 17px;
+    left: 50%;
+    transform: translateX(-50%);
+
+    button {
+      background: #F4F4F4 !important;
+      border: 1px solid #DDDDDD;
+      color: #092C4C !important;
+      width: 140px !important;
+      cursor: pointer;
+      opacity: 0.75;
+    }
+    button:hover {
+      opacity: 1;
+      transition: opacity 0.5s;
+    }
+  }
+}
+
+.copyright {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 15px;
+  text-align: center;
+  padding-top: 10px;
+  color: #000000;
+}
+
+.gu-btn-link {
+  text-decoration-line: none;
+  color: #0050B3;
+}
+
+.logo-growth-up {
+  width: 160px;
+  height: 30px;
+}
+
+.p-overlaypanel {
+
+  border-radius: 6px !important;
+
+  .p-overlaypanel-content {
+    padding: 0 !important;
+  }
+}
+
+.gu-layout {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+}
+
+.control-group {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 5px;
+
+  label {
+    white-space: nowrap;
+    margin-right: 13px;
+  }
+}
+
+#bg {
+  position: fixed;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+}
+
+#bg img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  min-width: 50%;
+  min-height: 50%;
+}
+
+.p-inputgroup {
+  position: relative;
+
+  .p-invalid {
+    color: red;
+    position: absolute;
+    bottom: -22px;
+    left: 0;
+  }
+}
+
+////////////////////
+// PADDING
+
+.pd-0 {
+  padding: 0 !important;
+}
+
+.pd-md {
+  padding: var(--distance-md);
+}
+
+.pd-lg {
+  padding: var(--distance-lg);
+}
+
+////////////////////
+
+.gu-btn-helps {
+  color: #8C8C8C;
+  margin-left: 15px;
+  text-decoration-line: none;
+}
+
+// default component
+.p-button-label {
+  font-weight: 700;
+}
+button {
+  i + .p-button-label {
+    display: block;
+    margin-left: 0.5rem;
+  }
+}
+// button {
+//   i + .p-button-label {
+//     display: none;
+//   }
+// }
+// @media screen and (min-width: 820px) {
+//   button {
+//     i + .p-button-label {
+//       display: block;
+//       margin-left: 0.5rem;
+//     }
+//   }
+// }
+
+.p-tag {
+  border-radius: 6px !important;
+}
+
+.off {
+  span {
+    background: #ADB5BD;
+  }
+}
+
+.p-tag.p-tag-success {
+  background-color: #22C55E !important;
+}
+
+.gu-display-flex {
+  display: flex;
+}
+
+.flex {
+  display: flex;
+}
+
+.flex.wrap {
+  flex-wrap: wrap;
+}
+
+.flex.wrap.gap-1 {
+  gap: 0.25rem;
+}
+.flex.wrap.gap-2 {
+  gap: 0.5rem;
+}
+.flex.wrap.gap-3 {
+  gap: 0.75rem;
+}
+.flex.wrap.gap-4 {
+  gap: 1rem;
+}
+
+.flex.column {
+  flex-direction: column;
+}
+
+.flex.v-center {
+  align-items: center;
+}
+
+.flex.v-stretch {
+  align-items: stretch;
+}
+
+.flex.h-center {
+  justify-content: center;
+}
+
+.flex.center {
+  justify-content: center;
+  align-items: center;
+}
+
+.flex.right {
+  justify-content: right;
+}
+
+.flex.space-between {
+  justify-content: space-between;
+}
+
+.flex.stretch {
+  align-items: stretch;
+}
+
+.flex-1 {
+  flex: 1;
+}
+.flex-2 {
+  flex: 2;
+}
+.flex-3 {
+  flex: 3;
+}
+.flex-4 {
+  flex: 4;
+}
+.flex-5 {
+  flex: 5;
+}
+.flex-6 {
+  flex: 6;
+}
+.flex-7 {
+  flex: 7;
+}
+.flex-8 {
+  flex: 8;
+}
+.flex-9 {
+  flex: 9;
+}
+
+.p-sidebar {
+  >.p-sidebar-header {
+    display: none;
+  }
+  >.p-sidebar-header + .p-sidebar-content {
+    padding: 0;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+}
+.p-sidebar .sidebar-wrapper {
+  padding: calc(0.5rem + 0.5vw) calc(0.75rem + 0.5vw);
+}
+
+.gu-header-sidebar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+  span {
+    margin-left: 6px;
+    font-size: 17.5px;
+    font-weight: 700;
+  }
+
+  button {
+    float: right
+  }
+}
+
+.gu-content-sidebar {
+  padding: 20px 6px 6px;
+}
+
+.p-tabview {
+  .p-tabview-panels {
+    background: unset !important;
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+  }
+}
+
+.gu-float-left {
+  float: left;
+}
+
+.gu-float-right {
+  float: right
+}
+
+.gu-font-600 {
+  font-weight: 600;
+}
+
+.chart {
+  canvas {
+    max-width: 100% !important;
+  }
+}
+
+.text-ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width : 15rem;
+}
+
+.text-no-wrap {
+  width: max-content;
+}
+
+.gu-fit-content {
+  min-width: fit-content;
+}
