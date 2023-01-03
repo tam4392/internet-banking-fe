@@ -44,12 +44,16 @@ import {CardModule} from 'primeng/card';
 import { HomeComponent } from './home/home.component';
 import { TransferComponent } from './transfer/transfer.component';
 import { TransactionHistoryComponent } from './transaction-history/transaction-history.component';
+import { EmployeeLoginComponent } from './authentication-employee/login/employee-login.component';
+import { AuthenticationEmployeeComponent } from './authentication-employee/authentication-employee.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LayoutAdminComponent,
     MenuItemComponent,
+    AuthenticationEmployeeComponent,
+    EmployeeLoginComponent,
     HomeComponent,
     TransferComponent,
     TransactionHistoryComponent,
