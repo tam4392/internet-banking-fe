@@ -1,11 +1,12 @@
-// import get from "lodash/get";
 import { ActivatedRoute } from '@angular/router';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-// import { global } from "@core/shared/global.shared";
-// import { PlatformService } from "@core/services/platform.service";
-import { Subscription } from 'rxjs';
 import { get } from 'lodash';
 import { MenuItem, PrimeIcons } from 'primeng/api';
+import { global } from '../../../helper/global.shared';
+import {
+  EMPLOYEE_TYPE_ADMIN,
+  EMPLOYEE_TYPE_NORMAL,
+} from 'src/core/interface/authentication.interface';
 
 export interface $navItem {
   label?: string;
@@ -31,8 +32,7 @@ export class MenuItemComponent implements OnInit {
   @Output() handleCollapsedS: EventEmitter<boolean> = new EventEmitter();
 
   isAdmin = false;
-  //   isPartner = global.isPartner;
-  //   orgId = global.me?.orgId;
+  type = global.me?.type;
   //   logo = global.org?.logo
   //   platNameShop = global.org?.nameShop;
   //   platPhone = global.org?.phone;
@@ -139,11 +139,16 @@ export class MenuItemComponent implements OnInit {
   constructor(
     private ActivatedRoute: ActivatedRoute // private PlatformService: PlatformService
   ) {
-    if (!!this.isAdmin) {
+    if (this.type === EMPLOYEE_TYPE_NORMAL) {
       this.items = [
         this.itemEmployeeCreateAccount,
         this.itemEmployeeDepositMoney,
         this.itemEmployeeTransactionHistory,
+      ];
+    } else if (this.type === EMPLOYEE_TYPE_ADMIN) {
+      this.items = [
+        this.itemAdminManageEmployee,
+        this.itemAdminManageForControl,
       ];
     } else {
       this.items = [
@@ -159,23 +164,6 @@ export class MenuItemComponent implements OnInit {
       const selectedItem = '/' + get(data, '0.path', '');
       this.collapsed(selectedItem, 'route');
     });
-
-    // const Subscription: Subscription = this.PlatformService.detail(
-    //   this.orgId
-    // ).subscribe(
-    //   (data) => {
-    //     if (data.error) {
-    //     }
-    //     const res = data?.data || {};
-    //     debugger;
-
-    //   },
-    //   (error) => {
-    //   },
-    //   () => {
-    //     Subscription.unsubscribe();
-    //   }
-    // );
   }
 
   private collapsed(data: string, ele: any) {
@@ -204,8 +192,4 @@ export class MenuItemComponent implements OnInit {
   handleCollapsed(idx: any) {
     this.collapsed(idx, 'idx');
   }
-
-  //   handleCollapsedSidebar() {
-  //     this.handleCollapsedS.emit(!this.isCollapsedSideBar);
-  //   }
 }

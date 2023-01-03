@@ -3,6 +3,7 @@ import { JWTDecodeMe } from '../helper/jwt.helper';
 class globalClass {
   private _me: any = {};
   private _token: string = '';
+  private _refreshToken: string = '';
 
   initToken(): string {
     const token = localStorage.getItem('token');
@@ -22,6 +23,11 @@ class globalClass {
     this._token = data;
   }
 
+  setRefreshToken(data: string) {
+    localStorage.setItem('refreshToken', data);
+    this._refreshToken = data;
+  }
+
   get me(): any {
     const token = localStorage.getItem('token') || '';
     this._me = JWTDecodeMe(token.toString());
@@ -32,10 +38,16 @@ class globalClass {
     return this._token;
   }
 
+  get refreshToken(): string {
+    return this._refreshToken;
+  }
+
   removeToken(): void {
     localStorage.removeItem('token');
+    localStorage.removeItem('refreshToken');
     this._me = {};
     this._token = '';
+    this._refreshToken = '';
   }
 }
 
