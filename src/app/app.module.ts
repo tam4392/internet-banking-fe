@@ -40,6 +40,7 @@ import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { TableModule } from 'primeng/table';
 import { TagModule } from 'primeng/tag';
 import { CarouselModule } from 'primeng/carousel';
+import {CardModule} from 'primeng/card';
 import { HomeComponent } from './home/home.component';
 import { TransferComponent } from './transfer/transfer.component';
 import { TransactionHistoryComponent } from './transaction-history/transaction-history.component';
@@ -91,6 +92,7 @@ import { TransactionHistoryComponent } from './transaction-history/transaction-h
     PanelModule,
     CarouselModule,
     AutoCompleteModule,
+    CardModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -1,10 +1,36 @@
 <app-layout-admin>
     <div class="dashboard-admin">
-        <div class="card">
-            <div class="card-content">
-                This is Page Home
-                <!-- Nội dung trang trong này -->
-            </div>
+        <div class="card-wrapper">
+            <p-card>
+                <ng-template pTemplate="header">
+                    <div class="card-header">
+                        <h5>Tài khoản</h5>
+                    </div>
+                </ng-template>
+                <div class="p-fluid p-formgrid p-grid">
+                    <div class="p-field p-col item-group">
+                        <label for="firstname">Firstname</label>
+                        <input id="firstname" type="text" pInputText>
+                    </div>
+                    <div class="p-field p-col item-group">
+                        <label for="lastname">Lastname</label>
+                        <input id="lastname" type="text" pInputText>
+                    </div>
+                </div>
+                <div class="p-fluid p-formgrid p-grid">
+                    <div class="p-field p-col item-group">
+                        <label for="firstname">Firstname</label>
+                        <input id="firstname" type="text" pInputText>
+                    </div>
+                    <div class="p-field p-col item-group">
+                        <label for="lastname">Lastname</label>
+                        <input id="lastname" type="text" pInputText>
+                    </div>
+                </div>
+                <!-- <ng-template pTemplate="footer">
+                    Footer content here
+                </ng-template> -->
+            </p-card>
         </div>
     </div>
 </app-layout-admin>
