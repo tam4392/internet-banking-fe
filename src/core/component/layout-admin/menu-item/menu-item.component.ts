@@ -30,7 +30,7 @@ export class MenuItemComponent implements OnInit {
   @Input() isCollapsedSideBar = false;
   @Output() handleCollapsedS: EventEmitter<boolean> = new EventEmitter();
 
-  isAdmin = true;
+  isAdmin = false;
   //   isPartner = global.isPartner;
   //   orgId = global.me?.orgId;
   //   logo = global.org?.logo
@@ -48,7 +48,8 @@ export class MenuItemComponent implements OnInit {
     parent: '0',
     isCollapsed: false,
   };
-  itemTransfer = {
+
+  itemCustomerTransfer = {
     label: 'Chuyển khoản',
     iconName: PrimeIcons.SEND,
     route: '/transfer',
@@ -57,7 +58,8 @@ export class MenuItemComponent implements OnInit {
     parent: '0',
     isCollapsed: false,
   };
-  itemTransactionHistory = {
+
+  itemCustomerTransactionHistory = {
     label: 'Lịch sử giao dịch',
     iconName: PrimeIcons.ALIGN_JUSTIFY,
     route: '/transaction-history',
@@ -67,7 +69,7 @@ export class MenuItemComponent implements OnInit {
     isCollapsed: false,
   };
 
-  itemAccountFavorite = {
+  itemCustomerAccountFavorite = {
     label: 'Người thụ hưởng',
     iconName: PrimeIcons.HEART,
     route: '/account-favorite',
@@ -77,71 +79,61 @@ export class MenuItemComponent implements OnInit {
     items: [],
   };
 
-  itemPaymentForPartner = {
-    label: 'Thanh toán',
-    iconName: 'pi pi-credit-card',
-    route: '/partner-payment',
+  itemCustomerDebtReminder = {
+    label: 'Quản lý nhắc nợ',
+    iconName: PrimeIcons.WALLET,
+    route: '/debt-reminder',
     idx: '4',
     parent: '0',
     isCollapsed: false,
-  };
-  itemSetting = {
-    label: 'Cài đặt',
-    iconName: 'pi pi-cog',
-    route: '/setting',
-    idx: '8',
     items: [],
-    parent: '0',
-    isCollapsed: false,
   };
-  itemTrademarkService = {
-    label: 'Cài đặt',
-    iconName: 'pi pi-cog',
-    route: '',
-    idx: '8',
-    parent: '0',
-    isCollapsed: false,
-    items: [],
-    // items: [
-    //   {
-    //     label: 'Thương hiệu & đối tác',
-    //     iconName: '',
-    //     route: '/trademark',
-    //     items: [],
-    //     idx: '8.1',
-    //     parent: '0',
-    //     className: 'item-child',
-    //   },
-    //   {
-    //     label: 'Gói dịch vụ',
-    //     iconName: '',
-    //     route: '/service-pack',
-    //     items: [],
-    //     idx: '8.2',
-    //     parent: '0',
-    //     className: 'item-child',
-    //   },
-    // ],
-  };
-  // itemEmail = {
-  //   label: 'Email',
-  //   iconName: 'pi pi-envelope',
-  //   route: '/email',
-  //   idx: '5',
-  //   items: [],
-  //   parent: '0',
-  //   isCollapsed: false,
-  // };
 
-  // itemPartnerList = {
-  //   label: 'Hệ thống đối tác',
-  //   iconName: 'pi pi-envelope',
-  //   route: '/partner-referral',
-  //   idx: '7',
-  //   items: [],
-  //   parent: '0',
-  //   isCollapsed: false,
-  // };
+  itemEmployeeCreateAccount = {
+    label: 'Tạo tài khoản khách hàng',
+    iconName: PrimeIcons.USER_PLUS,
+    route: '/employee-create-account',
+    idx: '5',
+    parent: '0',
+    isCollapsed: false,
+  };
+
+  itemEmployeeDepositMoney = {
+    label: 'Nạp tiền',
+    iconName: PrimeIcons.DOLLAR,
+    route: '/employee-deposit-money',
+    idx: '6',
+    parent: '0',
+    isCollapsed: false,
+  };
+
+  itemEmployeeTransactionHistory = {
+    label: 'Lịch sử giao dịch',
+    iconName: PrimeIcons.CHART_BAR,
+    route: '/employee-history-transaction',
+    idx: '7',
+    parent: '0',
+    isCollapsed: false,
+  };
+
+  itemAdminManageEmployee = {
+    label: 'Lịch sử giao dịch',
+    iconName: PrimeIcons.USERS,
+    route: '/manage-employee',
+    idx: '8',
+    parent: '0',
+    isCollapsed: false,
+  };
+
+  itemAdminManageForControl = {
+    label: 'Đối soát',
+    iconName: PrimeIcons.CHART_LINE,
+    route: '/manage-for-control',
+    idx: '9',
+    parent: '0',
+    isCollapsed: false,
+  };
+
   @Input() items: $navItem[] = [];
 
   constructor(
@@ -149,25 +141,24 @@ export class MenuItemComponent implements OnInit {
   ) {
     if (!!this.isAdmin) {
       this.items = [
-        this.itemCustomerAccount,
-        this.itemTransfer,
-        this.itemTransactionHistory,
-        this.itemAccountFavorite,
-        // this.itemPaymentForPartner,
+        this.itemEmployeeCreateAccount,
+        this.itemEmployeeDepositMoney,
+        this.itemEmployeeTransactionHistory,
       ];
     } else {
       this.items = [
         this.itemCustomerAccount,
-        // this.itemPartnerList,
-        this.itemTransactionHistory,
-        this.itemPaymentForPartner,
-        // this.itemSetting,
+        this.itemCustomerTransfer,
+        this.itemCustomerTransactionHistory,
+        this.itemCustomerAccountFavorite,
+        this.itemCustomerDebtReminder,
       ];
     }
-    // this.ActivatedRoute.url.subscribe((data) => {
-    //   const selectedItem = "/" + get(data, "0.path", "");
-    //   this.collapsed(selectedItem, "route");
-    // });
+
+    this.ActivatedRoute.url.subscribe((data) => {
+      const selectedItem = '/' + get(data, '0.path', '');
+      this.collapsed(selectedItem, 'route');
+    });
 
     // const Subscription: Subscription = this.PlatformService.detail(
     //   this.orgId
