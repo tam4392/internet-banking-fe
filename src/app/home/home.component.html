@@ -4,32 +4,63 @@
             <p-card>
                 <ng-template pTemplate="header">
                     <div class="card-header">
-                        <h5>Tài khoản</h5>
+                        <h2>Tài khoản</h2>
                     </div>
                 </ng-template>
-                <div class="p-fluid p-formgrid p-grid">
-                    <div class="p-field p-col item-group">
-                        <label for="firstname">Firstname</label>
-                        <input id="firstname" type="text" pInputText>
+                <div class="card-content">
+                    <div class="p-fluid p-formgrid p-grid">
+                        <div class="p-field p-col item-group ">
+                            <label for="username">Tên tài khoản</label>
+                            <input id="username" class="p-inputtext-lg" type="text" pInputText disabled [value]="username">
+                        </div>
+                        <div class="p-field p-col item-group">
+                            <label for="fullname">Họ tên</label>
+                            <input id="fullname" class="p-inputtext-lg" type="text" pInputText [(ngModel)]="fullname">
+                        </div>
                     </div>
-                    <div class="p-field p-col item-group">
-                        <label for="lastname">Lastname</label>
-                        <input id="lastname" type="text" pInputText>
+                    <div class="p-fluid p-formgrid p-grid">
+                        <div class="p-field p-col item-group">
+                            <label for="password">Mật khẩu</label>
+                            <input id="password" class="p-inputtext-lg" type="password" pInputText [(ngModel)]="password">
+                        </div>
+                        <div class="p-field p-col item-group"></div>
+                    </div>
+                    <div class="p-fluid p-formgrid p-grid">
+                        <div class="p-field p-col item-group">
+                            <label for="accountNum">Số tài khoản</label>
+                            <input id="accountNum" class="p-inputtext-lg" type="text" pInputText disabled [value]="accountNum">
+                        </div>
+                        <div class="p-field p-col item-group">
+                            <label for="balance">Số dư</label>
+                            <input id="balance" class="p-inputtext-lg" type="number" pInputText disabled [value]="balance">
+                        </div>
+                    </div>
+                    <div class="p-fluid p-formgrid p-grid">
+                        <div class="p-field p-col item-group">
+                            <label for="dob">Ngày sinh</label>
+                            <input id="dob" class="p-inputtext-lg" type="date" pInputText [(ngModel)]="dob">
+                        </div>
+                        <div class="p-field p-col item-group">
+                            <label for="address">Địa chỉ</label>
+                            <input id="address" class="p-inputtext-lg" type="text" pInputText [(ngModel)]="address">
+                        </div>
+                    </div>
+                    <div class="p-fluid p-formgrid p-grid">
+                        <div class="p-field p-col item-group">
+                            <label for="email">Email</label>
+                            <input id="email" class="p-inputtext-lg" type="text" pInputText [(ngModel)]="email">
+                        </div>
+                        <div class="p-field p-col item-group">
+                            <label for="phone">Số điện thoại</label>
+                            <input id="phone" class="p-inputtext-lg" type="text" pInputText [(ngModel)]="phone">
+                        </div>
                     </div>
                 </div>
-                <div class="p-fluid p-formgrid p-grid">
-                    <div class="p-field p-col item-group">
-                        <label for="firstname">Firstname</label>
-                        <input id="firstname" type="text" pInputText>
+                <ng-template pTemplate="card-footer">
+                    <div class="p-d-flex p-jc-end" style="margin-right: 70px;">
+                        <button pButton type="button" label="Cập nhật" style="padding: 15px;"></button>
                     </div>
-                    <div class="p-field p-col item-group">
-                        <label for="lastname">Lastname</label>
-                        <input id="lastname" type="text" pInputText>
-                    </div>
-                </div>
-                <!-- <ng-template pTemplate="footer">
-                    Footer content here
-                </ng-template> -->
+                </ng-template>
             </p-card>
         </div>
     </div>
