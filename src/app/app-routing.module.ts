@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthenticationEmployeeComponent } from './authentication-employee/authentication-employee.component';
 import { EmployeeLoginComponent } from './authentication-employee/login/employee-login.component';
+import { AuthenticationComponent } from './authentication/authentication.component';
+import { CustomerLoginComponent } from './authentication/login/customer-login.component';
 import { EmployeeDepositMoneyTransferComponent } from './employee-deposit-money-transfer/employee-deposit-money-transfer.component';
 import { EmployeeDepositMoneyComponent } from './employee-deposit-money/employee-deposit-money.component';
 import { HomeComponent } from './home/home.component';
@@ -16,6 +18,14 @@ const routes: Routes = [
     component: AuthenticationEmployeeComponent,
     children: [
       { path: 'login', component: EmployeeLoginComponent, data: { test: 1 } },
+      { path: '**', redirectTo: '' },
+    ],
+  },
+  {
+    path: 'authentication',
+    component: AuthenticationComponent,
+    children: [
+      { path: 'login', component: CustomerLoginComponent, data: { test: 1 } },
       { path: '**', redirectTo: '' },
     ],
   },
