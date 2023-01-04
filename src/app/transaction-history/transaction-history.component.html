@@ -3,8 +3,42 @@
     <div class="dashboard-admin">
         <div class="card">
             <div class="card-content">
-                This is Page Transaction History
-                <!-- Nội dung trang trong này -->
+                <div class="title">
+                    <h2>Lịch Sử Giao Dịch</h2>
+                    <span class="p-float-label p-input-icon-right">
+                        <i class="pi pi-search"></i>
+                        <input type="text" id="inputtext-left" class="input-search" pInputText [(ngModel)]="search" >
+                        <label for="inputtext-left">Tìm kiếm</label>
+                    </span>
+                </div>
+                <div class="content">
+                    <p-table [value]="transactionHistory" [paginator]="true" [rows]="rows" [showCurrentPageReport]="true" [(first)]="first"
+                             [tableStyle]="{'min-width': '50rem'}" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+                             [rowsPerPageOptions]="[10,25,50]">
+                        <ng-template pTemplate="header">
+                            <tr style="text-align: center">
+                                <th>Giao dịch</th>
+                                <th>Số tiền</th>
+                                <th>Thời gian</th>
+                                <th>Lời nhắn</th>
+                                <th></th>
+                        </ng-template>
+                        <ng-template pTemplate="body" let-product>
+                            <tr>
+                                <td>{{product.transaction}}</td>
+                                <td>{{product.amount}}</td>
+                                <td>{{product.time}}</td>
+                                <td>{{product.message}}</td>
+                                <td><button pButton pRipple type="button" label="Xem chi tiết" class="p-button-raised p-button-warning"></button></td>
+                            </tr>
+                        </ng-template>
+                    </p-table>
+                </div>
+                <ng-template pTemplate="emptymessage">
+                  <tr>
+                      <td colspan="8">No customers found.</td>
+                  </tr>
+                </ng-template>
             </div>
         </div>
     </div>
