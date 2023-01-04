@@ -148,7 +148,7 @@ export class MenuItemComponent implements OnInit {
         this.itemAdminManageEmployee,
         this.itemAdminManageForControl,
       ];
-    }  else {
+    } else {
       this.items = [
         this.itemCustomerAccount,
         this.itemCustomerTransfer,

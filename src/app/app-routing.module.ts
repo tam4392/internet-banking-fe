@@ -10,6 +10,7 @@ import { HomeComponent } from './home/home.component';
 import { TransactionHistoryComponent } from './transaction-history/transaction-history.component';
 import { SuggestAccountComponent } from './suggest-account/suggest-account.component';
 import { TransferComponent } from './transfer/transfer.component';
+import { EmployeeHistoryTransactionComponent } from './employee-history-transaction/employee-history-transaction.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -33,6 +34,10 @@ const routes: Routes = [
   {
     path: 'employee-deposit-money/:id',
     component: EmployeeDepositMoneyTransferComponent,
+  },
+  {
+    path: 'employee-history-transaction',
+    component: EmployeeHistoryTransactionComponent,
   },
   { path: 'transfer', component: TransferComponent },
   { path: 'transaction-history', component: TransactionHistoryComponent },

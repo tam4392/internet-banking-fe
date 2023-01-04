@@ -49,6 +49,9 @@ import { AuthenticationEmployeeComponent } from './authentication-employee/authe
 import { SuggestAccountComponent } from './suggest-account/suggest-account.component';
 import { EmployeeDepositMoneyComponent } from './employee-deposit-money/employee-deposit-money.component';
 import { EmployeeDepositMoneyTransferComponent } from './employee-deposit-money-transfer/employee-deposit-money-transfer.component';
+import { EmployeeHistoryTransactionComponent } from './employee-history-transaction/employee-history-transaction.component';
+import { CustomerLoginComponent } from './authentication/login/customer-login.component';
+import { AuthenticationComponent } from './authentication/authentication.component';
 
 @NgModule({
   declarations: [
@@ -63,6 +66,9 @@ import { EmployeeDepositMoneyTransferComponent } from './employee-deposit-money-
     SuggestAccountComponent,
     EmployeeDepositMoneyComponent,
     EmployeeDepositMoneyTransferComponent,
+    EmployeeHistoryTransactionComponent,
+    AuthenticationComponent,
+    CustomerLoginComponent,
   ],
   imports: [
     HttpClientModule,
