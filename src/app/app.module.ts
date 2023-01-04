@@ -40,13 +40,15 @@ import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { TableModule } from 'primeng/table';
 import { TagModule } from 'primeng/tag';
 import { CarouselModule } from 'primeng/carousel';
-import {CardModule} from 'primeng/card';
+import { CardModule } from 'primeng/card';
 import { HomeComponent } from './home/home.component';
 import { TransferComponent } from './transfer/transfer.component';
 import { TransactionHistoryComponent } from './transaction-history/transaction-history.component';
 import { EmployeeLoginComponent } from './authentication-employee/login/employee-login.component';
 import { AuthenticationEmployeeComponent } from './authentication-employee/authentication-employee.component';
 import { SuggestAccountComponent } from './suggest-account/suggest-account.component';
+import { EmployeeDepositMoneyComponent } from './employee-deposit-money/employee-deposit-money.component';
+import { EmployeeDepositMoneyTransferComponent } from './employee-deposit-money-transfer/employee-deposit-money-transfer.component';
 
 @NgModule({
   declarations: [
@@ -59,6 +61,8 @@ import { SuggestAccountComponent } from './suggest-account/suggest-account.compo
     TransferComponent,
     TransactionHistoryComponent,
     SuggestAccountComponent,
+    EmployeeDepositMoneyComponent,
+    EmployeeDepositMoneyTransferComponent,
   ],
   imports: [
     HttpClientModule,

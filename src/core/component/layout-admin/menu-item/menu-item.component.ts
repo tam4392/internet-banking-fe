@@ -136,9 +136,7 @@ export class MenuItemComponent implements OnInit {
 
   @Input() items: $navItem[] = [];
 
-  constructor(
-    private ActivatedRoute: ActivatedRoute // private PlatformService: PlatformService
-  ) {
+  constructor(private ActivatedRoute: ActivatedRoute) {
     if (this.type === EMPLOYEE_TYPE_NORMAL) {
       this.items = [
         this.itemEmployeeCreateAccount,
@@ -160,10 +158,10 @@ export class MenuItemComponent implements OnInit {
       ];
     }
 
-    this.ActivatedRoute.url.subscribe((data) => {
-      const selectedItem = '/' + get(data, '0.path', '');
-      this.collapsed(selectedItem, 'route');
-    });
+    // this.ActivatedRoute.url.subscribe((data) => {
+    //   const selectedItem = '/' + get(data, '0.path', '');
+    //   this.collapsed(selectedItem, 'route');
+    // });
   }
 
   private collapsed(data: string, ele: any) {

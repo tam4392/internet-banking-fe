@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthenticationEmployeeComponent } from './authentication-employee/authentication-employee.component';
 import { EmployeeLoginComponent } from './authentication-employee/login/employee-login.component';
+import { EmployeeDepositMoneyTransferComponent } from './employee-deposit-money-transfer/employee-deposit-money-transfer.component';
+import { EmployeeDepositMoneyComponent } from './employee-deposit-money/employee-deposit-money.component';
 import { HomeComponent } from './home/home.component';
 import { TransactionHistoryComponent } from './transaction-history/transaction-history.component';
 import { SuggestAccountComponent } from './suggest-account/suggest-account.component';
@@ -17,7 +19,11 @@ const routes: Routes = [
       { path: '**', redirectTo: '' },
     ],
   },
-
+  { path: 'employee-deposit-money', component: EmployeeDepositMoneyComponent },
+  {
+    path: 'employee-deposit-money/:id',
+    component: EmployeeDepositMoneyTransferComponent,
+  },
   { path: 'transfer', component: TransferComponent },
   { path: 'transaction-history', component: TransactionHistoryComponent },
   { path: 'suggest-account', component: SuggestAccountComponent },

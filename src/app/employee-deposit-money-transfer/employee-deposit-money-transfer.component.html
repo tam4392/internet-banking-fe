@@ -1,0 +1,38 @@
+<app-layout-admin>
+    <div class="gu-box-content">
+        <div class="p-pl-3 p-pr-3">
+            <strong>Nạp tiền</strong>
+            <p-divider></p-divider>
+            <div class="p-grid p-fluid">
+                <div class="p-field p-sm-12 p-md-6 p-lg-6">
+                    <label for="name">Họ và tên</label>
+                    <input id="name" type="text" pInputText [(ngModel)]="customer.name" [disabled]="true" />
+                </div>
+                <div class="p-field p-sm-12 p-md-6 p-lg-6">
+                    <label for="accountNum">Số tài khoản</label>
+                    <input id="accountNum" type="text" pInputText [(ngModel)]="customer.accountNum" [disabled]="true" />
+                </div>
+                <div class="p-field p-sm-12 p-md-6 p-lg-6">
+                    <label for="email">Email</label>
+                    <input id="email" [disabled]="true" type="email" pInputText [(ngModel)]="customer.email" />
+                </div>
+                <div class="p-field p-sm-12 p-md-6 p-lg-6">
+                    <label for="accountBalance">Số dư</label>
+                    <input id="accountBalance" [disabled]="true" pInputText [(ngModel)]="customer.accountBalance" />
+                </div>
+                <div class="p-field p-sm-12 p-md-6 p-lg-6">
+                    <label for="amount">Số tiền cần nạp</label>
+                    <p-inputNumber [min]="0" [(ngModel)]="amount" (ngModelChange)="checkDisabledSave()"></p-inputNumber>
+
+                </div>
+                <div class="p-field p-sm-12 p-md-6 p-lg-6">
+                    <label for="content">Nội dung gửi tiền</label>
+                    <input id="content" pInputText [(ngModel)]="content" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="p-mt-3 p-text-right">
+        <p-button label="Nạp tiền" (click)="updateAccountBalance()"  [disabled]="cantClick" [loading]="loading"></p-button>
+    </div>
+</app-layout-admin>

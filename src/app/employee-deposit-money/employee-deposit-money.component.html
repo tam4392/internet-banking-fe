@@ -1,0 +1,38 @@
+<app-layout-admin>
+    <div class="gu-box-content">
+        <div class="card">
+            <div class="card-content">
+                <p-table [value]="lstCustomer">
+                    <ng-template pTemplate="header">
+                        <tr>
+                            <th style="min-width:15rem">Khách hàng</th>
+                            <th style="min-width:15rem">Thông tin liên hệ</th>
+                            <th style="min-width:9rem; max-width: 10rem;">Ngày đăng ký</th>
+                            <th style="min-width:9rem; max-width: 10rem; justify-content: center;">Hành động</th>
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="body" let-customer>
+                        <tr>
+                            <td style="min-width:15rem">
+                                <p-avatar label="{{customer.name?.substring(0,2)}}" styleClass="mr-2" size="large" shape="circle"></p-avatar>
+                                <span class="p-pl-2 gu-line-ellipsis" title="{{customer.name}}"><strong>{{ customer.name }}</strong></span>
+                            </td>
+                            <td style="min-width:15rem">
+                                <div class="gu-display-flex p-flex-column">
+                                    <span class="email gu-line-ellipsis" title="{{ customer.email }}"><i class="pi pi-envelope"></i> {{ customer.email }}</span>
+                                    <span><i class="pi pi-phone"></i> {{customer.phone}} </span>
+                                </div>
+                            </td>
+                            <td style="min-width:9rem; max-width: 10rem;">{{ customer.createdAt | date:'dd-MM-y' }}</td>
+                            <td style="min-width:9rem; max-width: 10rem;">
+                                <a class="gu-a-action" href="javascript:void(0)" routerLink="{{'/employee-deposit-money/' + customer.id}}">
+                                    <i class="pi pi-send cam-action"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    </ng-template>
+                </p-table>
+            </div>
+        </div>
+    </div>
+</app-layout-admin>

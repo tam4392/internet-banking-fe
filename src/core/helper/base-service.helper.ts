@@ -43,8 +43,12 @@ export abstract class BaseService {
     );
   }
 
-  private basePut(data: data): Observable<any> {
-    return this.httpClient.put(data.url || '', data.body ?? {}, this.options());
+  private basePatch(data: data): Observable<any> {
+    return this.httpClient.patch(
+      data.url || '',
+      data.body ?? {},
+      this.options()
+    );
   }
 
   private baseDelete(data: data): Observable<any> {
@@ -76,7 +80,7 @@ export abstract class BaseService {
     });
   }
 
-  protected call(data: data, method: 'get' | 'post' | 'put' | 'delete') {
+  protected call(data: data, method: 'get' | 'post' | 'patch' | 'delete') {
     let run: Observable<any>;
     data.url = this.apiServer + this.base + data.url;
     switch (method) {
@@ -86,8 +90,8 @@ export abstract class BaseService {
       case 'post':
         run = this.basePost(data);
         break;
-      case 'put':
-        run = this.basePut(data);
+      case 'patch':
+        run = this.basePatch(data);
         break;
       default:
         run = this.baseDelete(data);
