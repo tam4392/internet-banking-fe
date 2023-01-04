@@ -4,6 +4,7 @@ import { AuthenticationEmployeeComponent } from './authentication-employee/authe
 import { EmployeeLoginComponent } from './authentication-employee/login/employee-login.component';
 import { HomeComponent } from './home/home.component';
 import { TransactionHistoryComponent } from './transaction-history/transaction-history.component';
+import { SuggestAccountComponent } from './suggest-account/suggest-account.component';
 import { TransferComponent } from './transfer/transfer.component';
 
 const routes: Routes = [
@@ -19,6 +20,7 @@ const routes: Routes = [
 
   { path: 'transfer', component: TransferComponent },
   { path: 'transaction-history', component: TransactionHistoryComponent },
+  { path: 'suggest-account', component: SuggestAccountComponent },
   { path: '**', redirectTo: '' },
 ];
 

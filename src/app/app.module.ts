@@ -46,6 +46,7 @@ import { TransferComponent } from './transfer/transfer.component';
 import { TransactionHistoryComponent } from './transaction-history/transaction-history.component';
 import { EmployeeLoginComponent } from './authentication-employee/login/employee-login.component';
 import { AuthenticationEmployeeComponent } from './authentication-employee/authentication-employee.component';
+import { SuggestAccountComponent } from './suggest-account/suggest-account.component';
 
 @NgModule({
   declarations: [
@@ -57,6 +58,7 @@ import { AuthenticationEmployeeComponent } from './authentication-employee/authe
     HomeComponent,
     TransferComponent,
     TransactionHistoryComponent,
+    SuggestAccountComponent,
   ],
   imports: [
     HttpClientModule,

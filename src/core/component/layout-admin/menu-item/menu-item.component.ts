@@ -69,10 +69,10 @@ export class MenuItemComponent implements OnInit {
     isCollapsed: false,
   };
 
-  itemCustomerAccountFavorite = {
+  itemCustomerSuggestAccount = {
     label: 'Người thụ hưởng',
     iconName: PrimeIcons.HEART,
-    route: '/account-favorite',
+    route: '/suggest-account',
     idx: '3',
     parent: '0',
     isCollapsed: false,
@@ -150,12 +150,12 @@ export class MenuItemComponent implements OnInit {
         this.itemAdminManageEmployee,
         this.itemAdminManageForControl,
       ];
-    } else {
+    }  else {
       this.items = [
         this.itemCustomerAccount,
         this.itemCustomerTransfer,
         this.itemCustomerTransactionHistory,
-        this.itemCustomerAccountFavorite,
+        this.itemCustomerSuggestAccount,
         this.itemCustomerDebtReminder,
       ];
     }
