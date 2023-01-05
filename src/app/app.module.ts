@@ -53,6 +53,7 @@ import { EmployeeHistoryTransactionComponent } from './employee-history-transact
 import { CustomerLoginComponent } from './authentication/login/customer-login.component';
 import { AuthenticationComponent } from './authentication/authentication.component';
 import { CurrencyVndPipe } from 'src/core/pipe/currency.pipe';
+import {CaptchaModule} from 'primeng/captcha';
 
 @NgModule({
   declarations: [
@@ -111,6 +112,7 @@ import { CurrencyVndPipe } from 'src/core/pipe/currency.pipe';
     CarouselModule,
     AutoCompleteModule,
     CardModule,
+    CaptchaModule
   ],
   providers: [],
   bootstrap: [AppComponent],
