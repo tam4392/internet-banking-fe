@@ -15,18 +15,20 @@ export class AppComponent implements OnInit {
 
   constructor(private primengConfig: PrimeNGConfig, private router: Router) {
     this.router.events.subscribe((event: Event) => {
-      // if (event instanceof NavigationEnd) {
-      //   const currRoute = event.url.replace('#loading', '');
-      //   const token = Object.keys(global.initToken()).length > 0;
-      //   if (
-      //     !token &&
-      //     (currRoute.includes('employee-') || currRoute.includes('manage-'))
-      //   ) {
-      //     this.router.navigate(['/authentication-employee/login']);
-      //   } else if (!token) {
-      //     this.router.navigate(['/authentication/login']);
-      //   }
-      // }
+      if (event instanceof NavigationEnd) {
+        const currRoute = event.url.replace('#loading', '');
+        const token = Object.keys(global.initToken()).length > 0;
+        if (
+          !token &&
+          (currRoute.includes('employee-') ||
+            currRoute.includes('-employee') ||
+            currRoute.includes('manage-'))
+        ) {
+          this.router.navigate(['/authentication-employee/login']);
+        } else if (!token) {
+          this.router.navigate(['/authentication/login']);
+        }
+      }
     });
   }
 

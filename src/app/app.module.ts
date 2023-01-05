@@ -52,6 +52,7 @@ import { EmployeeDepositMoneyTransferComponent } from './employee-deposit-money-
 import { EmployeeHistoryTransactionComponent } from './employee-history-transaction/employee-history-transaction.component';
 import { CustomerLoginComponent } from './authentication/login/customer-login.component';
 import { AuthenticationComponent } from './authentication/authentication.component';
+import { CurrencyVndPipe } from 'src/core/pipe/currency.pipe';
 
 @NgModule({
   declarations: [
@@ -69,6 +70,7 @@ import { AuthenticationComponent } from './authentication/authentication.compone
     EmployeeHistoryTransactionComponent,
     AuthenticationComponent,
     CustomerLoginComponent,
+    CurrencyVndPipe,
   ],
   imports: [
     HttpClientModule,

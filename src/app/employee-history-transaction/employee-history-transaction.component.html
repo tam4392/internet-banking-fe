@@ -5,10 +5,37 @@
                 <p-table [value]="lstTransaction">
                     <ng-template pTemplate="header">
                         <tr>
-                            <th style="min-width:15rem">Khách hàng</th>
-                            <th style="min-width:15rem">Thông tin liên hệ</th>
-                            <th style="min-width:9rem; max-width: 10rem;">Ngày đăng ký</th>
-                            <th style="min-width:9rem; max-width: 10rem; justify-content: center;">Hành động</th>
+                            <th style="min-width:15rem">Người gửi</th>
+                            <th style="min-width:15rem">Người nhận</th>
+                            <th style="min-width:15rem">Số tiền</th>
+                            <th style="min-width:15rem">Nội dung</th>
+                            <th style="min-width:9rem; max-width: 10rem;">Ngày gửi/nhận</th>
+                            <th style="min-width:9rem; max-width: 10rem; justify-content: center;">Loại</th>
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="body" let-transaction>
+                        <tr>
+                            <td style="min-width:15rem">
+                                <span class="p-pl-2 gu-line-ellipsis" title="{{transaction.sendAccNum.name}}">{{
+                                    transaction.sendAccNum.name }}</span>
+                            </td>
+                            <td style="min-width:15rem">
+                                <span class="p-pl-2 gu-line-ellipsis" title="{{transaction.receiveAccNum.name}}">{{
+                                    transaction.receiveAccNum.name }}</span>
+                            </td>
+                            <td style="min-width:15rem">
+                                <span class="p-pl-2 gu-line-ellipsis" title="{{transaction.amount}}">{{
+                                    transaction.amount | currencyVnd }}</span>
+                            </td>
+                            <td style="min-width:15rem">
+                                <span class="p-pl-2 gu-line-ellipsis" title="{{transaction.content}}">{{
+                                    transaction.content}}</span>
+                            </td>
+                            <td style="min-width:9rem; max-width: 10rem;">{{ transaction.createdAt | date:'dd-MM-y' }}
+                            </td>
+                            <td style="min-width:9rem; max-width: 10rem;">{{ getTransactionType(transaction.type) }}
+                            </td>
+
                         </tr>
                     </ng-template>
                 </p-table>

@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
 import { objError, objSuccess } from 'src/core/interface/error.interface';
 import {
+  transactionTypeList,
   TRANSACTION_PAYMENT_TYPE_PAID_SENDER,
   TRANSACTION_TYPE_SEND,
 } from 'src/core/interface/transaction.interface';
@@ -23,6 +24,7 @@ export class EmployeeHistoryTransactionComponent implements OnInit {
   content: string = '';
   cantClick = true;
   loading = false;
+  totalCount = 0;
 
   constructor(
     private CustomerService: CustomerService,
@@ -32,18 +34,27 @@ export class EmployeeHistoryTransactionComponent implements OnInit {
     private router: Router
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.getLstTransaction({});
+  }
 
-  transfer() {
-    // this.TransactionService.create(this.formatData()).subscribe(
-    //   (data) => {
-    //     setTimeout(
-    //       () => this.router.navigate(['/employee-deposit-money']),
-    //       200
-    //     );
-    //   },
-    //   (error: HttpErrorResponse) => {},
-    //   () => {}
-    // );
+  getLstTransaction(filter: any) {
+    this.TransactionService.get(filter).subscribe(
+      (data) => {
+        this.lstTransaction = data.data;
+        this.totalCount = data.totalCount;
+        console.log(data);
+      },
+      (error: HttpErrorResponse) => {},
+      () => {}
+    );
+  }
+
+  getTransactionType(type: any) {
+    const itemType = transactionTypeList.find(
+      (obj) => obj.value === Number(type)
+    );
+
+    return itemType?.text;
   }
 }
