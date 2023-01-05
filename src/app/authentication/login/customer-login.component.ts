@@ -33,7 +33,12 @@ export class CustomerLoginComponent implements OnInit {
   ngOnInit(): void {}
 
   showResponse(event: any) {
-    this.messageService.add({severity:'info', summary:'Succees', detail: 'User Responded', sticky: true});
+    this.messageService.add({
+      severity: 'info',
+      summary: 'Succees',
+      detail: 'User Responded',
+      sticky: true,
+    });
   }
 
   login() {
