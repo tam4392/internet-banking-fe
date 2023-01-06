@@ -6,15 +6,13 @@
                 <div class="p-grid">
                     <div class="p-col">
                         <div class="box">
-                            <!-- auto -->
                         </div>
                     </div>
                     <div class="p-col-fixed wrap-avatar">
                         <div class="p-d-flex p-ai-center">
-                            <p-avatar label="{{me.name?.substring(0,2)}}" styleClass="mr-2" size="large"
-                                shape="circle"></p-avatar>
-                            <span class="p-pl-2 gu-line-ellipsis" title="{{me.name}}"><strong>{{ me.name
-                                    }}</strong></span>
+                            <div shape="circle" class="gu-avatar-header-right">{{me.name?.substring(0,2)}}</div>
+                            <span class="p-pl-2 p-as-center">{{ me.name
+                                }}</span>
                         </div>
                         <!-- <p-overlayPanel #op [showCloseIcon]="false" [style]="{width: '190px'}" class="profile-overlay" my="left top" at="left bottom">
                             <div class="control-menu">
