@@ -112,7 +112,7 @@ import {CaptchaModule} from 'primeng/captcha';
     CarouselModule,
     AutoCompleteModule,
     CardModule,
-    CaptchaModule
+    CaptchaModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

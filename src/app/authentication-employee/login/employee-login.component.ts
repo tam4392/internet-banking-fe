@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
 import { Subscription } from 'rxjs';
+import { PrimeNGConfig } from 'primeng/api';
 import { objError, objSuccess } from '../../../core/interface/error.interface';
 import { global } from '../../../core/helper/global.shared';
 import { AuthenticationService } from '../../../core/services/authentication.service';
@@ -21,49 +22,62 @@ export class EmployeeLoginComponent implements OnInit {
   email = '';
   password = '';
   loading = false;
+  check=false;
   private loginSubscribe!: Subscription;
 
   constructor(
     private messageService: MessageService,
+    private primengConfig: PrimeNGConfig,
     private AuthenticationService: AuthenticationService,
     private route: ActivatedRoute,
     private router: Router
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.primengConfig.ripple = false;
+  }
+
+  showResponse(event: any) {
+    this.messageService.add({severity:'info', summary:'Succees', detail: 'User Responded', sticky: true});
+    this.check = true;
+  }
 
   login() {
-    this.loginSubscribe = this.AuthenticationService.employeeLogin({
-      email: this.email,
-      password: this.password,
-    }).subscribe(
-      (data) => {
-        this.messageService.addAll([objSuccess]);
-        if (!data.error) {
-          global.setToken(data.accessToken);
-          global.setRefreshToken(data.refreshToken);
-          const type = global.me?.type;
-          if (type === EMPLOYEE_TYPE_NORMAL) {
-            setTimeout(() => {
-              this.router.navigate(['/employee-create-account'], {
-                relativeTo: this.route,
-              });
-            }, 300);
+    if(this.check) {
+      this.loginSubscribe = this.AuthenticationService.employeeLogin({
+        email: this.email,
+        password: this.password,
+      }).subscribe(
+        (data) => {
+          this.messageService.addAll([objSuccess]);
+          if (!data.error) {
+            global.setToken(data.accessToken);
+            global.setRefreshToken(data.refreshToken);
+            const type = global.me?.type;
+            if (type === EMPLOYEE_TYPE_NORMAL) {
+              setTimeout(() => {
+                this.router.navigate(['/employee-create-account'], {
+                  relativeTo: this.route,
+                });
+              }, 300);
+            } else {
+              setTimeout(() => {
+                this.router.navigate(['/manage-employee'], {
+                  relativeTo: this.route,
+                });
+              }, 300);
+            }
           } else {
-            setTimeout(() => {
-              this.router.navigate(['/manage-employee'], {
-                relativeTo: this.route,
-              });
-            }, 300);
+            this.loading = false;
           }
-        } else {
+        },
+        (error: HttpErrorResponse) => {
+          this.messageService.addAll([objError]);
           this.loading = false;
         }
-      },
-      (error: HttpErrorResponse) => {
-        this.messageService.addAll([objError]);
-        this.loading = false;
-      }
-    );
+      );
+    } else {
+      this.messageService.add({severity:'error', summary:'Error', detail: 'Captcha is not correct', sticky: true});
+    }
   }
 }

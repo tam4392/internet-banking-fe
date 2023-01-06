@@ -22,6 +22,12 @@
                                 [toggleMask]="true"></p-password>
                         </div>
                     </div>
+                    <div class="captcha">
+                      <p-toast></p-toast>
+                      <p-captcha siteKey="6Le5sc8jAAAAAAoXLmOSvwEFZeyYsrEE7Zg2sCJP"
+                          (onResponse)="showResponse($event)" initCallback="onloadCallback" size="normal">
+                      </p-captcha>
+                    </div>
                     <button pButton type="button" label="Đăng nhập" class="p-button-primary" style="width: 100%;"
                         (click)="login()" [loading]="loading"></button>
                 </div>

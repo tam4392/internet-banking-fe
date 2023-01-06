@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
 import { Subscription } from 'rxjs';
+import { PrimeNGConfig } from 'primeng/api';
 import { objError, objSuccess } from '../../../core/interface/error.interface';
 import { global } from '../../../core/helper/global.shared';
 import { AuthenticationService } from '../../../core/services/authentication.service';
@@ -21,27 +22,30 @@ export class CustomerLoginComponent implements OnInit {
   email = '';
   password = '';
   loading = false;
+  check=false;
   private loginSubscribe!: Subscription;
 
   constructor(
     private messageService: MessageService,
+    private primengConfig: PrimeNGConfig,
     private AuthenticationService: AuthenticationService,
     private route: ActivatedRoute,
     private router: Router
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.primengConfig.ripple = false;
+  }
 
   showResponse(event: any) {
-    this.messageService.add({
-      severity: 'info',
-      summary: 'Succees',
-      detail: 'User Responded',
-      sticky: true,
-    });
+    this.messageService.add({severity:'info', summary:'Succees', detail: 'User Responded', sticky: true});
+    this.check = true;
   }
 
   login() {
+    if(this.check){
+      this.messageService.add({severity:'info', summary:'Succees', detail: 'đăng nhập thành công', sticky: true});
+    }
     // this.loginSubscribe = this.AuthenticationService.employeeLogin({
     //   email: this.email,
     //   password: this.password,
