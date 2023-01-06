@@ -1,46 +1,64 @@
 import { Component, OnInit } from '@angular/core';
+import { CustomerService } from '../../core/services/customer.service';
+import { global } from 'src/core/helper/global.shared';
+import { objError, objSuccess } from 'src/core/interface/error.interface';
+import { MessageService } from 'primeng/api';
+import { HttpErrorResponse } from '@angular/common/http';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
+  providers: [MessageService],
 })
 export class HomeComponent implements OnInit {
-  //   isAdmin = false;
-  //   isPartner = false;
-  username: string;
-  password: string;
-  fullname: string;
-  accountNum: string;
-  balance: Number;
-  dob: string;
-  address: string;
-  email: string;
-  phone: string;
+  customer: any;
+  id: any;
+  amount: number = 0;
+  content: string = '';
+  cantClick = false;
+  loading = false;
 
-  constructor() {
-    // this.isAdmin = global.isAdmin;
-    // this.isPartner = global.isPartner;
-    this.username = '';
-    this.password = '';
-    this.fullname = '';
-    this.accountNum = '';
-    this.balance = 0;
-    this.dob = '';
-    this.address='';
-    this.email='';
-    this.phone='';
-  }
+  constructor(
+    private CustomerService: CustomerService,
+    private messageService: MessageService,
+    private Route: ActivatedRoute,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
-    this.username = 'chao tam';
-    this.password = '123456';
-    this.fullname = 'Nguyễn Văn A';
-    this.accountNum = '1234578412';
-    this.balance = 15000.0;
-    this.dob = '1998-12-12';
-    this.address='365 Nguyễn Văn Trỗi Street';
-    this.email='user01@email.com';
-    this.phone='0812345678';
+    this.getCustomer(global.me.id);
+  }
+
+  private getCustomer(id: string) {
+    this.CustomerService.detail(id).subscribe((data:any) => {
+      if (!data.error) {
+        this.customer = data;
+        const dobDate = new Date(this.customer.dob);
+        this.customer.dob = dobDate.toISOString().substring(0, 10);
+      }
+    });
+  }
+
+  updateCustomer() {
+    this.loading = true;
+
+    console.log(JSON.stringify(this.customer));
+    this.CustomerService.update(this.customer).subscribe(
+      (data: any) => {
+        if (!data.error) {
+          this.messageService.addAll([objSuccess]);
+          this.loading = false;
+        }
+      },
+      (error: HttpErrorResponse) => {
+        this.messageService.addAll([objError]);
+        this.loading = false;
+      },
+      () => {
+        this.loading = false;
+      }
+    );
   }
 }
