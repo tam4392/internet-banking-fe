@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PrimeNGConfig } from 'primeng/api';
+import { SuggestAccountService } from '../../core/services/suggest-account.service';
 
 @Component({
   selector: 'app-suggest-account',
@@ -13,6 +14,7 @@ export class SuggestAccountComponent implements OnInit {
   search = '';
   inputText = '';
   nguoithuhuong = 'Nguyễn Hoàng Long';
+  lstSuggestAccount: any[] = [];
   rows = 10;
   first = 0;
   next() {
@@ -33,13 +35,20 @@ export class SuggestAccountComponent implements OnInit {
     { check: false, name: "NGUYỄN HUỲNH ANH VŨ", numberAccount: "622704060221524", nameBank: "VIB - NH TMCP QUOC TE VIET..." }
   ];
 
-  constructor() {
+  constructor(private SuggestAccountService: SuggestAccountService) {
     // this.isAdmin = global.isAdmin;
     // this.isPartner = global.isPartner;
   }
 
   ngOnInit(): void {
-    this.inputText = 'chao tam';
-    //SuggestAccount.map(data => this.product = data);
+    this.getlstSuggestAccount({});
+  }
+
+  private getlstSuggestAccount(filter: any) {
+    this.SuggestAccountService.get(filter).subscribe((data: any) => {
+      if (!data.error) {
+        this.lstSuggestAccount = data;
+      }
+    });
   }
 }
