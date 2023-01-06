@@ -7,8 +7,8 @@ import { BaseService } from '../helper/base-service.helper';
 @Injectable({
   providedIn: 'root',
 })
-export class CustomerService extends BaseService {
-  base = 'customers';
+export class SuggestAccountService extends BaseService {
+  base = 'suggestAccount';
   constructor(protected httpClient: HttpClient, protected router: Router) {
     super();
   }
@@ -23,15 +23,15 @@ export class CustomerService extends BaseService {
     return this.call({ url: '', params }, 'get');
   }
 
+  getSuggestAccountById(id: string): Observable<any> {
+    return this.call({ url: '/' + id }, 'get');
+  }
+
   detail(id: string): Observable<any> {
     return this.call({ url: '/' + id }, 'get');
   }
 
   update(data: any): Observable<any> {
     return this.call({ url: '', body: data }, 'patch');
-  }
-
-  updateAccountBalance(id: number, data: any): Observable<any> {
-    return this.call({ url: '/' + id, body: data }, 'patch');
   }
 }

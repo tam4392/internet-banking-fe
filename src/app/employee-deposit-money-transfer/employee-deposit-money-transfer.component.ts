@@ -68,7 +68,6 @@ export class EmployeeDepositMoneyTransferComponent implements OnInit {
   updateAccountBalance() {
     this.customer.accountBalance += this.amount;
     this.loading = true;
-    console.log(JSON.stringify(this.customer));
     this.CustomerService.update(this.customer).subscribe(
       (data: any) => {
         if (!data.error) {
