@@ -3,7 +3,10 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 import { BaseService } from '../helper/base-service.helper';
-import { EmployeeLoginDataInterface } from '../interface/authentication.interface';
+import {
+  EmployeeLoginDataInterface,
+  CustomerLoginDataInterface,
+} from '../interface/authentication.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -18,7 +21,7 @@ export class AuthenticationService extends BaseService {
     return this.call({ url: '/employee/signin', body: data }, 'post');
   }
 
-  customerLogin(data: EmployeeLoginDataInterface): Observable<any> {
+  customerLogin(data: CustomerLoginDataInterface): Observable<any> {
     return this.call({ url: '/signin', body: data }, 'post');
   }
 }

@@ -14,7 +14,7 @@ import { AuthenticationService } from '../../../core/services/authentication.ser
   providers: [MessageService],
 })
 export class CustomerLoginComponent implements OnInit {
-  email = '';
+  userName = '';
   password = '';
   loading = false;
   check = false;
@@ -42,7 +42,7 @@ export class CustomerLoginComponent implements OnInit {
   login() {
     if (this.check) {
       this.loginSubscribe = this.AuthenticationService.customerLogin({
-        email: this.email,
+        userName: this.userName,
         password: this.password,
       }).subscribe(
         (data) => {

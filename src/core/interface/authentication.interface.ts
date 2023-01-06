@@ -5,3 +5,8 @@ export class EmployeeLoginDataInterface {
   email = '';
   password = '';
 }
+
+export class CustomerLoginDataInterface {
+  userName = '';
+  password = '';
+}
