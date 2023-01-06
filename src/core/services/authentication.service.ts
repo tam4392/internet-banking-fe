@@ -17,4 +17,8 @@ export class AuthenticationService extends BaseService {
   employeeLogin(data: EmployeeLoginDataInterface): Observable<any> {
     return this.call({ url: '/employee/signin', body: data }, 'post');
   }
+
+  customerLogin(data: EmployeeLoginDataInterface): Observable<any> {
+    return this.call({ url: '/signin', body: data }, 'post');
+  }
 }
