@@ -11,6 +11,8 @@ import { TransactionHistoryComponent } from './transaction-history/transaction-h
 import { SuggestAccountComponent } from './suggest-account/suggest-account.component';
 import { TransferComponent } from './transfer/transfer.component';
 import { EmployeeHistoryTransactionComponent } from './employee-history-transaction/employee-history-transaction.component';
+import { DebtReminderComponent } from './debt-reminder/debt-reminder.component';
+import { DebtReminderListComponent } from './debt-reminder/list/debt-reminder-list.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -42,6 +44,18 @@ const routes: Routes = [
   { path: 'transfer', component: TransferComponent },
   { path: 'transaction-history', component: TransactionHistoryComponent },
   { path: 'suggest-account', component: SuggestAccountComponent },
+  {
+    path: 'debt-reminder',
+    component: DebtReminderComponent,
+    children: [
+      { path: '', component: DebtReminderListComponent },
+      // {
+      //   path: 'new',
+      //   component: CampaignNewComponent,
+      // },
+      // { path: ':id', component: CampaignUpdateComponent },
+    ],
+  },
   { path: '**', redirectTo: '' },
 ];
 

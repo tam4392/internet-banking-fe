@@ -55,6 +55,8 @@ import { AuthenticationComponent } from './authentication/authentication.compone
 import { CurrencyVndPipe } from 'src/core/pipe/currency.pipe';
 import { CaptchaModule } from 'primeng/captcha';
 import { DropdownModule } from 'primeng/dropdown';
+import { DebtReminderComponent } from './debt-reminder/debt-reminder.component';
+import { DebtReminderListComponent } from './debt-reminder/list/debt-reminder-list.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -72,6 +74,8 @@ import { DropdownModule } from 'primeng/dropdown';
     AuthenticationComponent,
     CustomerLoginComponent,
     CurrencyVndPipe,
+    DebtReminderComponent,
+    DebtReminderListComponent,
   ],
   imports: [
     HttpClientModule,
