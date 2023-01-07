@@ -43,7 +43,6 @@ export class EmployeeHistoryTransactionComponent implements OnInit {
       (data) => {
         this.lstTransaction = data.data;
         this.totalCount = data.totalCount;
-        console.log(data);
       },
       (error: HttpErrorResponse) => {},
       () => {}
