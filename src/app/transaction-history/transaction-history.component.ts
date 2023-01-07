@@ -44,7 +44,7 @@ export class TransactionHistoryComponent implements OnInit {
   }
 
   getLstTransaction(id: string) {
-    this.TransactionService.detail(id).subscribe(
+    this.TransactionService.getOwnerDetail(id).subscribe(
       (data: any) => {
         this.totalCount = data.totalCount;
         this.localTransactions = data.data;

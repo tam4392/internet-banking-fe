@@ -23,7 +23,7 @@ export class TransactionService extends BaseService {
     return this.call({ url: '', params }, 'get');
   }
 
-  detail(id: string): Observable<any> {
+  getOwnerDetail(id: string): Observable<any> {
     return this.call({ url: '?id=' + id }, 'get');
   }
 
