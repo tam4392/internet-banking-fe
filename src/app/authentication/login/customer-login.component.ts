@@ -42,7 +42,7 @@ export class CustomerLoginComponent implements OnInit {
   login() {
     if (this.check) {
       this.loginSubscribe = this.AuthenticationService.customerLogin({
-        userName: this.userName,
+        username: this.userName,
         password: this.password,
       }).subscribe(
         (data) => {

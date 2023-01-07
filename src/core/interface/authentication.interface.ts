@@ -7,6 +7,6 @@ export class EmployeeLoginDataInterface {
 }
 
 export class CustomerLoginDataInterface {
-  userName = '';
+  username = '';
   password = '';
 }
