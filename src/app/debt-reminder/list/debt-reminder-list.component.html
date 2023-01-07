@@ -4,7 +4,7 @@
         <div class="card">
             <div class="p-grid" style="padding: 8px">
                 <div class="p-col p-as-start">
-                    <p-button label="Tạo phiếu mới" icon="pi pi-plus"></p-button>
+                    <p-button label="Tạo phiếu mới" icon="pi pi-plus"  (click)="navigateCreate()"></p-button>
                 </div>
             </div>
         </div>
@@ -45,7 +45,7 @@
                             <span class="p-pl-2 gu-line-ellipsis">{{ getDebitStatus(debit.status) }}</span>
                         </td>
                         <td style="min-width:9rem; max-width: 10rem;">
-                            <a class="gu-a-action" href="javascript:void(0)" routerLink="{{'/debt-reminder/' + debit.id}}">
+                            <a *ngIf="me.id===debit.createdBy" class="gu-a-action" href="javascript:void(0)" routerLink="{{'/debt-reminder/' + debit.id}}">
                                 <i class="pi pi-pencil cam-action"></i>
                             </a>
                         </td>

@@ -13,6 +13,7 @@ import { TransferComponent } from './transfer/transfer.component';
 import { EmployeeHistoryTransactionComponent } from './employee-history-transaction/employee-history-transaction.component';
 import { DebtReminderComponent } from './debt-reminder/debt-reminder.component';
 import { DebtReminderListComponent } from './debt-reminder/list/debt-reminder-list.component';
+import { DebtReminderNewComponent } from './debt-reminder/new/debt-reminder-new.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -49,10 +50,10 @@ const routes: Routes = [
     component: DebtReminderComponent,
     children: [
       { path: '', component: DebtReminderListComponent },
-      // {
-      //   path: 'new',
-      //   component: CampaignNewComponent,
-      // },
+      {
+        path: 'new',
+        component: DebtReminderNewComponent,
+      },
       // { path: ':id', component: CampaignUpdateComponent },
     ],
   },

@@ -1,0 +1,45 @@
+<p-toast></p-toast>
+<app-layout-admin>
+    <div class="gu-box-content">
+        <div class="p-pl-3 p-pr-3">
+            <strong>Thông tin phiếu nợ</strong>
+            <p-divider></p-divider>
+            <div class="p-grid p-fluid">
+                <div class="p-field p-sm-12 p-md-6 p-lg-6">
+                    <label for="accountNumChoose">Nhập/ chọn tài khoản nợ</label>
+                    <p-autoComplete [(ngModel)]="selectedAccount" [suggestions]="filteredAccount"
+                        (onSelect)="checkDisabledSave()" (onUnselect)="checkDisabledSave()"
+                        (onClear)="checkDisabledSave()" (completeMethod)="filterChoose($event)" field="name"
+                        [dropdown]="true">
+                        <ng-template let-account pTemplate="item">
+                            <div class="account-item">
+                                <div>{{ account.name }}</div>
+                            </div>
+                        </ng-template>
+                    </p-autoComplete>
+                </div>
+                <div class="p-field p-sm-12 p-md-6 p-lg-6">
+                    <label for="amount">Số tiền</label>
+                    <p-inputNumber [min]="0" [(ngModel)]="amount" (ngModelChange)="checkDisabledSave()"></p-inputNumber>
+                </div>
+                <div class="p-field p-sm-12 p-md-6 p-lg-6">
+                    <label for="amount">Ngày trả</label>
+                    <input id="dob" type="date" pInputText [(ngModel)]="dateRemind">
+
+                </div>
+                <div class="p-field p-sm-12 p-md-6 p-lg-6">
+                    <label for="amount">Loại</label>
+                    <p-dropdown styleClass="dropdown" [options]="optionType" [(ngModel)]="selectedOption"
+                        optionLabel="text"></p-dropdown>
+                </div>
+                <div class="p-field p-sm-12 p-md-6 p-lg-6">
+                    <label for="amount">Ghi chú</label>
+                    <input id="content" pInputText [(ngModel)]="content" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="p-mt-3 p-text-right">
+        <p-button label="Tạo phiếu"   (click)="getCreateDebit()"  [disabled]="cantClick" [loading]="loading"></p-button>
+    </div>
+</app-layout-admin>

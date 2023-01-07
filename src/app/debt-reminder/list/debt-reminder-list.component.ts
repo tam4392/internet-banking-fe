@@ -53,4 +53,8 @@ export class DebtReminderListComponent implements OnInit {
     );
     return itemType?.text;
   }
+
+  navigateCreate() {
+    setTimeout(() => this.router.navigate(['debt-reminder/new']), 200);
+  }
 }

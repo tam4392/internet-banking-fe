@@ -57,7 +57,7 @@ export class EmployeeLoginComponent implements OnInit {
             const type = global.me?.type;
             if (type === EMPLOYEE_TYPE_NORMAL) {
               setTimeout(() => {
-                this.router.navigate(['/employee-create-account'], {
+                this.router.navigate(['/employee-deposit-money'], {
                   relativeTo: this.route,
                 });
               }, 300);
