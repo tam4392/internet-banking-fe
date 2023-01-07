@@ -3,6 +3,7 @@ import { TransactionService } from '../../core/services/transaction.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { global } from 'src/core/helper/global.shared';
 import { transactionTypeList } from 'src/core/interface/transaction.interface';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-transaction-history',
@@ -35,7 +36,7 @@ export class TransactionHistoryComponent implements OnInit {
     content: string;
   }[] = [];
 
-  constructor(private TransactionService: TransactionService) {}
+  constructor(private TransactionService: TransactionService, private router: Router) {}
 
   transactions = [];
 
@@ -60,5 +61,9 @@ export class TransactionHistoryComponent implements OnInit {
     );
 
     return itemType?.text;
+  }
+
+  openDetail(transaction: any) {
+    setTimeout(() => this.router.navigate(['transaction-history/detail']), 200);
   }
 }
