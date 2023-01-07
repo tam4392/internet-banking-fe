@@ -1,0 +1,68 @@
+<app-layout-admin>
+    <p-dialog header="Tạo tài khoản" [(visible)]="display" [style]="{width: '100vw'}">
+        <div class="card-wrapper">
+
+            <!-- <ng-template pTemplate="header">
+                    <div class="card-header">
+                        <h2>Tài khoản</h2>
+                    </div>
+                </ng-template> -->
+            <div class="card-content">
+                <div class="p-fluid p-formgrid p-grid">
+                    <div class="p-field p-col item-group">
+                        <label for="fullname">Họ tên</label>
+                        <input id="fullname" class="p-inputtext-lg" type="text" pInputText [(ngModel)]="insertCustomer.name">
+                    </div>
+                    <div class="p-field p-col item-group ">
+                        <label for="username">Tên tài khoản</label>
+                        <input id="username" class="p-inputtext-lg" type="text" pInputText [(ngModel)]="insertCustomer.userName">
+                    </div>
+                </div>
+                <div class="p-fluid p-formgrid p-grid">
+                    <div class="p-field p-col item-group">
+                        <label for="address">Địa chỉ</label>
+                        <input id="address" class="p-inputtext-lg" type="text" pInputText [(ngModel)]="insertCustomer.address">
+                    </div>
+                    <div class="p-field p-col item-group">
+                        <label for="password">Mật khẩu</label>
+                        <input id="password" class="p-inputtext-lg" type="password" pInputText [(ngModel)]="insertCustomer.password">
+                    </div>
+                    
+                </div>
+                <div class="p-fluid p-formgrid p-grid">
+                    <div class="p-field p-col item-group">
+                        <label for="email">Email</label>
+                        <input id="email" class="p-inputtext-lg" type="text" pInputText [(ngModel)]="insertCustomer.email">
+                    </div>
+                    <div class="p-field p-col item-group">
+                        <label for="balance">Số dư</label>
+                        <p-inputNumber id="balance" [min]="0" class="p-inputtext-lg" [(ngModel)]="insertCustomer.accountBalance"></p-inputNumber>
+                    </div>
+                </div>
+                <div class="p-fluid p-formgrid p-grid">
+                    <div class="p-field p-col item-group">
+                        <label for="dob">Ngày sinh</label>
+                        <input id="dob" class="p-inputtext-lg" type="date" pInputText [(ngModel)]="insertCustomer.dob">
+                    </div>
+                    <div class="p-field p-col item-group">
+                    </div>
+                </div>
+                <div class="p-fluid p-formgrid p-grid">
+                    <div class="p-field p-col item-group">
+                        <label for="phone">Số điện thoại</label>
+                        <input id="phone" class="p-inputtext-lg" type="text" pInputText [(ngModel)]="insertCustomer.phone">
+                    </div>
+                    <div class="p-field p-col item-group">
+                    </div>
+                </div>
+            </div>
+            <div class="p-d-flex p-jc-end" style="margin-right: 70px;">
+                    <button pButton type="button" label="Tạo" (click)="insertAccount()" [loading]="loading"></button>
+                    <button pButton type="button" (click)="hideDialog()" label="Hủy" class="p-button-danger"></button>
+            </div>
+        </div>
+    </p-dialog>
+    <div class="dashboard-admin">
+        <button pButton type="button" (click)="showDialog()" label="Tạo tài khoản" style="padding: 15px;"></button>
+    </div>
+</app-layout-admin>
