@@ -47,13 +47,19 @@ import { TransactionHistoryComponent } from './transaction-history/transaction-h
 import { EmployeeLoginComponent } from './authentication-employee/login/employee-login.component';
 import { AuthenticationEmployeeComponent } from './authentication-employee/authentication-employee.component';
 import { SuggestAccountComponent } from './suggest-account/suggest-account.component';
+import { EmployeeCreateAccountComponent } from './employee-create-account/employee-create-account.component';
 import { EmployeeDepositMoneyComponent } from './employee-deposit-money/employee-deposit-money.component';
 import { EmployeeDepositMoneyTransferComponent } from './employee-deposit-money-transfer/employee-deposit-money-transfer.component';
 import { EmployeeHistoryTransactionComponent } from './employee-history-transaction/employee-history-transaction.component';
 import { CustomerLoginComponent } from './authentication/login/customer-login.component';
 import { AuthenticationComponent } from './authentication/authentication.component';
 import { CurrencyVndPipe } from 'src/core/pipe/currency.pipe';
-import {CaptchaModule} from 'primeng/captcha';
+import { CaptchaModule } from 'primeng/captcha';
+import { DropdownModule } from 'primeng/dropdown';
+import { DebtReminderComponent } from './debt-reminder/debt-reminder.component';
+import { DebtReminderListComponent } from './debt-reminder/list/debt-reminder-list.component';
+import { DebtReminderNewComponent } from './debt-reminder/new/debt-reminder-new.component';
+
 
 @NgModule({
   declarations: [
@@ -66,12 +72,16 @@ import {CaptchaModule} from 'primeng/captcha';
     TransferComponent,
     TransactionHistoryComponent,
     SuggestAccountComponent,
+    EmployeeCreateAccountComponent,
     EmployeeDepositMoneyComponent,
     EmployeeDepositMoneyTransferComponent,
     EmployeeHistoryTransactionComponent,
     AuthenticationComponent,
     CustomerLoginComponent,
     CurrencyVndPipe,
+    DebtReminderComponent,
+    DebtReminderListComponent,
+    DebtReminderNewComponent,
   ],
   imports: [
     HttpClientModule,
@@ -113,6 +123,7 @@ import {CaptchaModule} from 'primeng/captcha';
     AutoCompleteModule,
     CardModule,
     CaptchaModule,
+    DropdownModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

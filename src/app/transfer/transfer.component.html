@@ -1,12 +1,102 @@
-<!-- <p-toast></p-toast> -->
+<p-toast></p-toast>
 <app-layout-admin>
-    <div class="dashboard-admin">
-        <div class="card">
-            <div class="card-content">
-                This is Page Transfer
-                <!-- Nội dung trang trong này -->
+    <div *ngIf="!isShowVerifyOtp">
+        <div class="gu-box-content">
+            <div class="p-pl-3 p-pr-3">
+                <strong>Thông tin tài khoản</strong>
+                <p-divider></p-divider>
+                <div class="p-grid p-fluid">
+                    <div class="p-field p-sm-12 p-md-6 p-lg-6">
+                        <label for="accountNum">Số tài khoản</label>
+                        <input id="accountNum" type="text" pInputText [disabled]="true"
+                            [(ngModel)]="customer.accountNum" />
+                    </div>
+                    <div class="p-field p-sm-12 p-md-6 p-lg-6">
+                        <label for="accountBalance">Số dư</label>
+                        <input id="accountBalance" [disabled]="true" pInputText [(ngModel)]="customer.accountBalance" />
+                    </div>
+                </div>
             </div>
+        </div>
+        <div class="card gu-box-content p-mt-4">
+            <div class="p-pl-3 p-pr-3">
+                <strong>Thông tin giao dịch</strong>
+                <p-divider></p-divider>
+                <div class="p-grid p-fluid">
+                    <div class="p-field p-sm-12 p-md-6 p-lg-6">
+                        <label for="accountNumChoose">Nhập/ chọn tài khoản nhận</label>
+                        <p-autoComplete [(ngModel)]="selectedAccount" [suggestions]="filteredAccount"
+                            (onSelect)="checkDisabledSave()" (onUnselect)="checkDisabledSave()"
+                            (onClear)="checkDisabledSave()" (completeMethod)="filterChoose($event)" field="name"
+                            [dropdown]="true">
+                            <ng-template let-account pTemplate="item">
+                                <div class="account-item">
+                                    <div>{{ account.name }}</div>
+                                </div>
+                            </ng-template>
+                        </p-autoComplete>
+                    </div>
+                    <div class="p-field p-sm-12 p-md-6 p-lg-6">
+                        <label for="amount">Phí giao dịch</label>
+                        <p-dropdown styleClass="dropdown" [options]="optionPaymentType" [(ngModel)]="selectedPayment"
+                            optionLabel="text" (onChange)="changeOptionPaymentTypeData($event)"></p-dropdown>
+                    </div>
+                    <div class="p-field p-sm-12 p-md-6 p-lg-6">
+                        <label for="amount">Số tiền</label>
+                        <p-inputNumber [min]="0" [(ngModel)]="amount"
+                            (ngModelChange)="checkDisabledSave()"></p-inputNumber>
+                    </div>
+                    <div class="p-field p-sm-12 p-md-6 p-lg-6">
+                        <label for="amount">Ghi chú</label>
+                        <input id="content" pInputText [(ngModel)]="content" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="p-mt-3 p-text-right">
+            <p-button label="Tiếp tục" (click)="requestOtp()" [disabled]="cantClick" [loading]="loading"></p-button>
         </div>
     </div>
 
+    <div *ngIf="isShowVerifyOtp">
+        <div class="gu-box-content">
+            <div class="p-pl-3 p-pr-3">
+                <strong>Xác nhận thông tin</strong>
+                <p-divider></p-divider>
+                <div class="p-grid p-fluid">
+                    <div class="p-field p-sm-12 p-md-12 p-lg-12">
+                        <label for="amount">Tài khoản nguồn: <strong>{{itemReceipt.source}}</strong></label>
+                    </div>
+                    <div class="p-field p-sm-12 p-md-12 p-lg-12">
+                        <label for="amount">Tài khoản đích: <strong>{{itemReceipt.target}}</strong></label>
+                    </div>
+                    <div class="p-field p-sm-12 p-md-12 p-lg-12">
+                        <label for="amount">Tên người thụ hưởng: <strong style="color: red;">{{itemReceipt.name}}</strong></label>
+                    </div>
+                    <div class="p-field p-sm-12 p-md-12 p-lg-12">
+                        <label for="amount">Số tiền: <strong style="color: red;">{{itemReceipt.amount | currencyVnd }}</strong></label>
+                    </div>
+                    <div class="p-field p-sm-12 p-md-12 p-lg-12">
+                        <label for="amount">Nội dung: {{itemReceipt.content}}</label>
+                    </div>
+                    <div class="p-field p-sm-3 p-md-3 p-lg-3">
+                        <p-button label="Thêm vào danh sách chuyển khoản" (click)="addAccSuggest()"></p-button>
+                    </div>
+                </div>
+            </div>
+            <div class="p-pl-3 p-pr-3">
+                <strong>Vui lòng nhập mã xác minh từ email của bạn</strong>
+                <p-divider></p-divider>
+                <div class="p-grid p-fluid">
+                    <div class="p-field p-col-6 p-offset-3">
+                        <label for="otpCode" style="width: 100%; text-align: center;">Mã xác minh</label>
+                        <input id="otpCode" pInputText [(ngModel)]="otpCode" (ngModelChange)="checkDisabledTransfer()" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="p-mt-3 p-text-right">
+            <p-button label="Xác nhận" (click)="verifyOtp()" [disabled]="cantClickOTP" [loading]="loading"></p-button>
+        </div>
+    </div>
 </app-layout-admin>

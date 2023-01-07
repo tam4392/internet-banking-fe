@@ -12,7 +12,7 @@
                     </span>
                 </div>
                 <div class="content">
-                    <p-table [value]="transactionHistory" [paginator]="true" [rows]="rows" [showCurrentPageReport]="true" [(first)]="first"
+                    <p-table [value]="localTransactions" [paginator]="true" [rows]="rows" [showCurrentPageReport]="true" [(first)]="first"
                              [tableStyle]="{'min-width': '50rem'}" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
                              [rowsPerPageOptions]="[10,25,50]">
                         <ng-template pTemplate="header">
@@ -23,12 +23,12 @@
                                 <th>Lời nhắn</th>
                                 <th></th>
                         </ng-template>
-                        <ng-template pTemplate="body" let-product>
+                        <ng-template pTemplate="body" let-transaction>
                             <tr>
-                                <td>{{product.transaction}}</td>
-                                <td>{{product.amount}}</td>
-                                <td>{{product.time}}</td>
-                                <td>{{product.message}}</td>
+                                <td>{{ getTransactionType(transaction.type)}}</td>
+                                <td>{{transaction.amount | currencyVnd}}</td>
+                                <td>{{transaction.createdAt | date:'dd-MM-y'}}</td>
+                                <td>{{transaction.content}}</td>
                                 <td><button pButton pRipple type="button" label="Xem chi tiết" class="p-button-raised p-button-warning"></button></td>
                             </tr>
                         </ng-template>

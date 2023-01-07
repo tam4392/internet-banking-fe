@@ -1,3 +1,4 @@
+<p-toast></p-toast>
 <app-layout-admin>
     <div class="dashboard-admin">
         <div class="card-wrapper">
@@ -11,54 +12,54 @@
                     <div class="p-fluid p-formgrid p-grid">
                         <div class="p-field p-col item-group ">
                             <label for="username">Tên tài khoản</label>
-                            <input id="username" class="p-inputtext-lg" type="text" pInputText disabled [value]="username">
+                            <input id="username" class="p-inputtext-lg" type="text" pInputText disabled [value]="customer.userName">
                         </div>
                         <div class="p-field p-col item-group">
                             <label for="fullname">Họ tên</label>
-                            <input id="fullname" class="p-inputtext-lg" type="text" pInputText [(ngModel)]="fullname">
+                            <input id="fullname" class="p-inputtext-lg" type="text" pInputText [(ngModel)]="customer.name">
                         </div>
                     </div>
                     <div class="p-fluid p-formgrid p-grid">
                         <div class="p-field p-col item-group">
                             <label for="password">Mật khẩu</label>
-                            <input id="password" class="p-inputtext-lg" type="password" pInputText [(ngModel)]="password">
+                            <input id="password" class="p-inputtext-lg" type="password" pInputText>
                         </div>
                         <div class="p-field p-col item-group"></div>
                     </div>
                     <div class="p-fluid p-formgrid p-grid">
                         <div class="p-field p-col item-group">
                             <label for="accountNum">Số tài khoản</label>
-                            <input id="accountNum" class="p-inputtext-lg" type="text" pInputText disabled [value]="accountNum">
+                            <input id="accountNum" class="p-inputtext-lg" type="text" pInputText disabled [value]="customer.accountNum">
                         </div>
                         <div class="p-field p-col item-group">
                             <label for="balance">Số dư</label>
-                            <input id="balance" class="p-inputtext-lg" type="number" pInputText disabled [value]="balance">
+                            <input id="balance" class="p-inputtext-lg" type="number" pInputText disabled [value]="customer.accountBalance">
                         </div>
                     </div>
                     <div class="p-fluid p-formgrid p-grid">
                         <div class="p-field p-col item-group">
                             <label for="dob">Ngày sinh</label>
-                            <input id="dob" class="p-inputtext-lg" type="date" pInputText [(ngModel)]="dob">
+                            <input id="dob" class="p-inputtext-lg" type="date" pInputText [(ngModel)]="customer.dob" value="{{ customer.dob }}">
                         </div>
                         <div class="p-field p-col item-group">
                             <label for="address">Địa chỉ</label>
-                            <input id="address" class="p-inputtext-lg" type="text" pInputText [(ngModel)]="address">
+                            <input id="address" class="p-inputtext-lg" type="text" pInputText [(ngModel)]="customer.address">
                         </div>
                     </div>
                     <div class="p-fluid p-formgrid p-grid">
                         <div class="p-field p-col item-group">
                             <label for="email">Email</label>
-                            <input id="email" class="p-inputtext-lg" type="text" pInputText [(ngModel)]="email">
+                            <input id="email" class="p-inputtext-lg" type="text" pInputText [(ngModel)]="customer.email">
                         </div>
                         <div class="p-field p-col item-group">
                             <label for="phone">Số điện thoại</label>
-                            <input id="phone" class="p-inputtext-lg" type="text" pInputText [(ngModel)]="phone">
+                            <input id="phone" class="p-inputtext-lg" type="text" pInputText [(ngModel)]="customer.phone">
                         </div>
                     </div>
                 </div>
                 <ng-template pTemplate="card-footer">
                     <div class="p-d-flex p-jc-end" style="margin-right: 70px;">
-                        <button pButton type="button" label="Cập nhật" style="padding: 15px;"></button>
+                        <button pButton type="button" label="Cập nhật" (click)="updateCustomer()"  [disabled]="cantClick" [loading]="loading" style="padding: 15px;"></button>
                     </div>
                 </ng-template>
             </p-card>

@@ -6,11 +6,15 @@ import { AuthenticationComponent } from './authentication/authentication.compone
 import { CustomerLoginComponent } from './authentication/login/customer-login.component';
 import { EmployeeDepositMoneyTransferComponent } from './employee-deposit-money-transfer/employee-deposit-money-transfer.component';
 import { EmployeeDepositMoneyComponent } from './employee-deposit-money/employee-deposit-money.component';
+import { EmployeeCreateAccountComponent } from './employee-create-account/employee-create-account.component';
 import { HomeComponent } from './home/home.component';
 import { TransactionHistoryComponent } from './transaction-history/transaction-history.component';
 import { SuggestAccountComponent } from './suggest-account/suggest-account.component';
 import { TransferComponent } from './transfer/transfer.component';
 import { EmployeeHistoryTransactionComponent } from './employee-history-transaction/employee-history-transaction.component';
+import { DebtReminderComponent } from './debt-reminder/debt-reminder.component';
+import { DebtReminderListComponent } from './debt-reminder/list/debt-reminder-list.component';
+import { DebtReminderNewComponent } from './debt-reminder/new/debt-reminder-new.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -36,12 +40,28 @@ const routes: Routes = [
     component: EmployeeDepositMoneyTransferComponent,
   },
   {
+    path: 'employee-create-account',
+    component: EmployeeCreateAccountComponent,
+  },
+  {
     path: 'employee-history-transaction',
     component: EmployeeHistoryTransactionComponent,
   },
   { path: 'transfer', component: TransferComponent },
   { path: 'transaction-history', component: TransactionHistoryComponent },
   { path: 'suggest-account', component: SuggestAccountComponent },
+  {
+    path: 'debt-reminder',
+    component: DebtReminderComponent,
+    children: [
+      { path: '', component: DebtReminderListComponent },
+      {
+        path: 'new',
+        component: DebtReminderNewComponent,
+      },
+      // { path: ':id', component: CampaignUpdateComponent },
+    ],
+  },
   { path: '**', redirectTo: '' },
 ];
 

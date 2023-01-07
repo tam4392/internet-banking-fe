@@ -4,7 +4,9 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
 import { objError, objSuccess } from 'src/core/interface/error.interface';
 import {
+  TRANSACTION_PAYMENT_TYPE_PAID_RECIPIENTS,
   TRANSACTION_PAYMENT_TYPE_PAID_SENDER,
+  TRANSACTION_TYPE_RECEIVE,
   TRANSACTION_TYPE_SEND,
 } from 'src/core/interface/transaction.interface';
 import { CustomerService } from '../../core/services/customer.service';
@@ -56,8 +58,8 @@ export class EmployeeDepositMoneyTransferComponent implements OnInit {
       content: this.content,
       sendBankId: this.customer.bankId,
       receiveBankId: this.customer.bankId,
-      paymentType: TRANSACTION_PAYMENT_TYPE_PAID_SENDER,
-      type: TRANSACTION_TYPE_SEND,
+      paymentType: TRANSACTION_PAYMENT_TYPE_PAID_RECIPIENTS,
+      type: TRANSACTION_TYPE_RECEIVE,
     };
   }
 
@@ -68,7 +70,6 @@ export class EmployeeDepositMoneyTransferComponent implements OnInit {
   updateAccountBalance() {
     this.customer.accountBalance += this.amount;
     this.loading = true;
-    console.log(JSON.stringify(this.customer));
     this.CustomerService.update(this.customer).subscribe(
       (data: any) => {
         if (!data.error) {

@@ -33,10 +33,6 @@ export class MenuItemComponent implements OnInit {
 
   isAdmin = false;
   type = global.me?.type;
-  //   logo = global.org?.logo
-  //   platNameShop = global.org?.nameShop;
-  //   platPhone = global.org?.phone;
-  //   platEmail = global.org?.emailRoot;
 
   itemCustomerAccount = {
     label: 'Tài khoản',

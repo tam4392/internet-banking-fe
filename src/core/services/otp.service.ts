@@ -7,27 +7,17 @@ import { BaseService } from '../helper/base-service.helper';
 @Injectable({
   providedIn: 'root',
 })
-export class TransactionService extends BaseService {
-  base = 'transactions';
+export class OTPService extends BaseService {
+  base = 'code-verify';
   constructor(protected httpClient: HttpClient, protected router: Router) {
     super();
   }
 
-  get(params: {
-    total?: '1' | '';
-    next_page?: '';
-    limit?: number;
-    field?: string;
-    [index: string]: any;
-  }): Observable<any> {
-    return this.call({ url: '', params }, 'get');
-  }
-
-  getOwnerDetail(id: string): Observable<any> {
-    return this.call({ url: '?id=' + id }, 'get');
-  }
-
   create(data: any): Observable<any> {
     return this.call({ url: '', body: data }, 'post');
+  }
+
+  verifyOTP(data: any): Observable<any> {
+    return this.call({ url: '/check', body: data }, 'post');
   }
 }

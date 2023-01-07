@@ -19,3 +19,14 @@ export const transactionTypeList = [
     text: 'Thanh toán nợ',
   },
 ];
+
+export const transactionPaymentTypeList = [
+  {
+    value: TRANSACTION_PAYMENT_TYPE_PAID_RECIPIENTS,
+    text: 'Người nhận trả',
+  },
+  {
+    value: TRANSACTION_PAYMENT_TYPE_PAID_SENDER,
+    text: 'Người chuyển trả',
+  },
+];
