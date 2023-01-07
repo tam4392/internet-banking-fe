@@ -38,4 +38,8 @@ export class SuggestAccountService extends BaseService {
   create(data: any): Observable<any> {
     return this.call({ url: '', body: data }, 'post');
   }
+
+  delete(id: string): Observable<any> {
+    return this.call({ url: '/' + id }, 'delete');
+  }
 }

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { PrimeNGConfig } from 'primeng/api';
+import { global } from 'src/core/helper/global.shared';
 import { SuggestAccountService } from '../../core/services/suggest-account.service';
+import { CustomerService } from '../../core/services/customer.service';
 
 @Component({
   selector: 'app-suggest-account',
@@ -13,27 +15,13 @@ export class SuggestAccountComponent implements OnInit {
   //   isPartner = false;
   search = '';
   inputText = '';
-  nguoithuhuong = 'Nguyễn Hoàng Long';
   lstSuggestAccount: any[] = [];
-  rows = 10;
+  cols: any[] = [];
   first = 0;
-  next() {
-    this.first = this.first + this.rows;
-  }
-
-  prev() {
-    this.first = this.first - this.rows;
-  }
 
   reset() {
     this.first = 0;
   }
-  suggestAccount = [
-    { check: false, name: "ĐỖ THỊ KIM ANH", numberAccount: "622704060213553", nameBank: "VIB - NH TMCP QUOC TE VIET..." },
-    { check: false, name: "LE THAI NGOC", numberAccount: "9704031173322046", nameBank: "VIB - NH TMCP QUOC TE VIET..." },
-    { check: false, name: "LE VAN TRAN HUY", numberAccount: "1140107011994", nameBank: "1140107011994	MB - NH TMCP QUAN DOI (MIL..." },
-    { check: false, name: "NGUYỄN HUỲNH ANH VŨ", numberAccount: "622704060221524", nameBank: "VIB - NH TMCP QUOC TE VIET..." }
-  ];
 
   constructor(private SuggestAccountService: SuggestAccountService) {
     // this.isAdmin = global.isAdmin;
@@ -41,14 +29,26 @@ export class SuggestAccountComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getlstSuggestAccount({});
+    this.getlstSuggestAccount({}, global.me.id);
+    this.delete(global.me.id);
+    this.cols = [
+      { field: "col1", header: "Tên người hưởng thụ" },
+      { field: "col2", header: "Tài khoản hưởng thụ" },
+      { field: "col3", header: "Đơn vị hưởng thụ" },
+    ];
   }
 
-  private getlstSuggestAccount(filter: any) {
-    this.SuggestAccountService.get(filter).subscribe((data: any) => {
+  private getlstSuggestAccount(filter: any, id: string) {
+    this.SuggestAccountService.getSuggestAccountById(id).subscribe((data: any) => {
       if (!data.error) {
         this.lstSuggestAccount = data;
       }
+    });
+  }
+
+  delete(id: string){
+    this.SuggestAccountService.delete(id).subscribe(() => {
+      this.getlstSuggestAccount(this.lstSuggestAccount, global.me.id);
     });
   }
 }
