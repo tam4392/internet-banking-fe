@@ -24,7 +24,7 @@ export class TransactionService extends BaseService {
   }
 
   detail(id: string): Observable<any> {
-    return this.call({ url: '/' + id }, 'get');
+    return this.call({ url: '?id=' + id }, 'get');
   }
 
   create(data: any): Observable<any> {
