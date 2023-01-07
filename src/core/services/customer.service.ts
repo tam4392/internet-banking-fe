@@ -34,4 +34,8 @@ export class CustomerService extends BaseService {
   updateAccountBalance(id: number, data: any): Observable<any> {
     return this.call({ url: '/' + id, body: data }, 'patch');
   }
+
+  search(params: { [index: string]: any }): Observable<any> {
+    return this.call({ url: '/search-by-account', params }, 'get');
+  }
 }
