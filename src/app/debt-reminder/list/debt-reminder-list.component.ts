@@ -32,11 +32,10 @@ export class DebtReminderListComponent implements OnInit {
   }
 
   getListDebitByMe() {
-    this.DebitService.get({ createdBy: this.me.id }).subscribe(
+    this.DebitService.get({ id: this.me.id }).subscribe(
       (data) => {
         this.lstDebit = data.data;
         this.totalCount = data.totalCount;
-        console.log(data);
       },
       (error: HttpErrorResponse) => {},
       () => {}
