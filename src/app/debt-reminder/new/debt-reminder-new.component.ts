@@ -10,6 +10,7 @@ import {
 } from 'src/core/interface/debit.interface';
 import { SuggestAccountService } from '../../../core/services/suggest-account.service';
 import { objError, objSuccess } from 'src/core/interface/error.interface';
+import { CustomerService } from '../../../core/services/customer.service';
 
 @Component({
   selector: 'app-debt-reminder-new',
@@ -37,7 +38,8 @@ export class DebtReminderNewComponent implements OnInit {
     private SuggestAccountService: SuggestAccountService,
     private messageService: MessageService,
     private Route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private CustomerService: CustomerService
   ) {}
 
   ngOnInit(): void {
@@ -63,7 +65,26 @@ export class DebtReminderNewComponent implements OnInit {
         filtered.push(country);
       }
     }
-    this.filteredAccount = filtered;
+    if (filtered.length === 0) {
+      this.CustomerService.search({ search: query }).subscribe((data: any) => {
+        if (data) {
+          filtered.push({
+            sendAccountNum: this.me.id,
+            receiveAccountNum: data.id,
+            name: data.name,
+            bankId: data.bankId,
+            receiveSgtAcc: {
+              id: data.id,
+              accountNum: data.accountNum,
+              name: data.name,
+            },
+          });
+          this.filteredAccount = filtered;
+        }
+      });
+    } else {
+      this.filteredAccount = filtered;
+    }
   }
 
   getCreateDebit() {
@@ -74,7 +95,7 @@ export class DebtReminderNewComponent implements OnInit {
       content: this.content,
       dateRemind: new Date(this.dateRemind).toISOString(),
       type: 1,
-      createdBy: 2,
+      createdBy: this.me.id,
     };
     this.loading = true;
     this.DebitService.create(data).subscribe(
