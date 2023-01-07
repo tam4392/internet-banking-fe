@@ -198,7 +198,7 @@ export class TransferComponent implements OnInit {
         );
         this.handleTransaction(this.dataTransactionSend);
         this.handleTransaction(this.dataTransactionReceive);
-        setTimeout(() => this.router.navigate(['/']), 3000);
+        setTimeout(() => this.router.navigate(['/transaction-history']), 3000);
         this.loading = false;
       }
     );
