@@ -4,8 +4,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
 import { objError, objSuccess } from 'src/core/interface/error.interface';
 import { CustomerService } from '../../core/services/customer.service';
-import { ToastrService } from 'ngx-toastr';
-
 @Component({
   selector: 'app-employee-create-account',
   templateUrl: './employee-create-account.component.html',
@@ -16,7 +14,7 @@ export class EmployeeCreateAccountComponent implements OnInit {
   insertCustomer: any;
   selectedCustomer: any;
   lstCustomer: any[] = [];
-  msgs : MessageService[]=[];
+  msgs: MessageService[] = [];
 
   display: boolean = false;
   cantClick = true;
@@ -26,26 +24,25 @@ export class EmployeeCreateAccountComponent implements OnInit {
   constructor(
     private CustomerService: CustomerService,
     private messageService: MessageService,
-    private toastr: ToastrService,
     private Route: ActivatedRoute,
     private router: Router
-  ) { }
+  ) {}
 
   ngOnInit(): void {
-    this.insertCustomer= this.initCust();
+    this.insertCustomer = this.initCust();
   }
 
-  initCust(){
+  initCust() {
     return {
-      userName: "user012",
-      password: "123456",
-      email: "nguyen-a@email.com",
-      address: "",
-      name: "Nguyễn Văn A",
+      userName: 'user012',
+      password: '123456',
+      email: 'nguyen-a@email.com',
+      address: '',
+      name: 'Nguyễn Văn A',
       accountBalance: 150000,
-      dob: "1995-02-02",
+      dob: '1995-02-02',
       bankId: null,
-    }
+    };
   }
 
   formatData() {
@@ -72,7 +69,7 @@ export class EmployeeCreateAccountComponent implements OnInit {
       },
       (error: HttpErrorResponse) => {
         this.messageService.addAll([objError]);
-      
+
         this.loading = false;
       },
       () => {
