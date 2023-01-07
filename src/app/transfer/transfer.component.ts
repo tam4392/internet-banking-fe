@@ -74,7 +74,26 @@ export class TransferComponent implements OnInit {
         filtered.push(country);
       }
     }
-    this.filteredAccount = filtered;
+    if (filtered.length === 0) {
+      this.CustomerService.search({ search: query }).subscribe((data: any) => {
+        if (data) {
+          filtered.push({
+            sendAccountNum: this.me.id,
+            receiveAccountNum: data.id,
+            name: data.name,
+            bankId: data.bankId,
+            receiveSgtAcc: {
+              id: data.id,
+              accountNum: data.accountNum,
+              name: data.name,
+            },
+          });
+          this.filteredAccount = filtered;
+        }
+      });
+    } else {
+      this.filteredAccount = filtered;
+    }
   }
 
   private getCustomer(id: any) {
@@ -128,6 +147,7 @@ export class TransferComponent implements OnInit {
   }
 
   checkDisabledSave() {
+    console.log(this.selectedAccount);
     this.cantClick = this.amount > 0 && this.selectedAccount ? false : true;
   }
 
@@ -198,7 +218,7 @@ export class TransferComponent implements OnInit {
         );
         this.handleTransaction(this.dataTransactionSend);
         this.handleTransaction(this.dataTransactionReceive);
-        setTimeout(() => this.router.navigate(['/']), 3000);
+        setTimeout(() => this.router.navigate(['/transaction-history']), 3000);
         this.loading = false;
       }
     );
@@ -226,5 +246,18 @@ export class TransferComponent implements OnInit {
 
   checkDisabledTransfer() {
     this.cantClickOTP = this.otpCode ? false : true;
+  }
+
+  addAccSuggest() {
+    this.SuggestAccountService.create({
+      sendAccountNum: this.me.id,
+      receiveAccountNum: this.selectedAccount?.receiveSgtAcc?.id,
+      name: this.selectedAccount.name,
+      bankId: this.selectedAccount.bankId,
+    }).subscribe((data: any) => {
+      if (data) {
+        this.MessageService.addAll([objSuccess]);
+      }
+    });
   }
 }

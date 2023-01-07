@@ -34,4 +34,8 @@ export class SuggestAccountService extends BaseService {
   update(data: any): Observable<any> {
     return this.call({ url: '', body: data }, 'patch');
   }
+
+  create(data: any): Observable<any> {
+    return this.call({ url: '', body: data }, 'post');
+  }
 }
