@@ -6,6 +6,7 @@ import { AuthenticationComponent } from './authentication/authentication.compone
 import { CustomerLoginComponent } from './authentication/login/customer-login.component';
 import { EmployeeDepositMoneyTransferComponent } from './employee-deposit-money-transfer/employee-deposit-money-transfer.component';
 import { EmployeeDepositMoneyComponent } from './employee-deposit-money/employee-deposit-money.component';
+import { EmployeeCreateAccountComponent } from './employee-create-account/employee-create-account.component';
 import { HomeComponent } from './home/home.component';
 import { TransactionHistoryComponent } from './transaction-history/transaction-history.component';
 import { SuggestAccountComponent } from './suggest-account/suggest-account.component';
@@ -37,6 +38,10 @@ const routes: Routes = [
   {
     path: 'employee-deposit-money/:id',
     component: EmployeeDepositMoneyTransferComponent,
+  },
+  {
+    path: 'employee-create-account',
+    component: EmployeeCreateAccountComponent,
   },
   {
     path: 'employee-history-transaction',

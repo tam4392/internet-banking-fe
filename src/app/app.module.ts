@@ -47,6 +47,7 @@ import { TransactionHistoryComponent } from './transaction-history/transaction-h
 import { EmployeeLoginComponent } from './authentication-employee/login/employee-login.component';
 import { AuthenticationEmployeeComponent } from './authentication-employee/authentication-employee.component';
 import { SuggestAccountComponent } from './suggest-account/suggest-account.component';
+import { EmployeeCreateAccountComponent } from './employee-create-account/employee-create-account.component';
 import { EmployeeDepositMoneyComponent } from './employee-deposit-money/employee-deposit-money.component';
 import { EmployeeDepositMoneyTransferComponent } from './employee-deposit-money-transfer/employee-deposit-money-transfer.component';
 import { EmployeeHistoryTransactionComponent } from './employee-history-transaction/employee-history-transaction.component';
@@ -58,6 +59,8 @@ import { DropdownModule } from 'primeng/dropdown';
 import { DebtReminderComponent } from './debt-reminder/debt-reminder.component';
 import { DebtReminderListComponent } from './debt-reminder/list/debt-reminder-list.component';
 import { DebtReminderNewComponent } from './debt-reminder/new/debt-reminder-new.component';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -69,6 +72,7 @@ import { DebtReminderNewComponent } from './debt-reminder/new/debt-reminder-new.
     TransferComponent,
     TransactionHistoryComponent,
     SuggestAccountComponent,
+    EmployeeCreateAccountComponent,
     EmployeeDepositMoneyComponent,
     EmployeeDepositMoneyTransferComponent,
     EmployeeHistoryTransactionComponent,

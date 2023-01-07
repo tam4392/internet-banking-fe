@@ -27,6 +27,11 @@ export class CustomerService extends BaseService {
     return this.call({ url: '/' + id }, 'get');
   }
 
+  insert(data: any): Observable<any> {
+    console.log(data);
+    return this.call({ url: '', body: data }, 'post');
+  }
+
   update(data: any): Observable<any> {
     return this.call({ url: '', body: data }, 'patch');
   }
